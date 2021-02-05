@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import apiService from "./Services/apiService.js";
+
+
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           This is a build test.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        //Temporary code (and buttons) to test fetches from database
+        <input type="button" value="1" onClick={console.log(apiService.getPersonById(1))}/>
+        <input type="button" value="2" onClick={console.log(apiService.getPersonById(2))}/>
       </header>
+
+
 	  {
 		  /*
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
