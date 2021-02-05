@@ -11,7 +11,9 @@ function App() {
         <p>
           This is a build test.
         </p>
-        //Temporary code (and buttons) to test fetches from database
+        {
+          //Temporary code (and buttons) to test fetches from database
+        }
         <input type="button" value="1" onClick={console.log(apiService.getPersonById(1))}/>
         <input type="button" value="2" onClick={console.log(apiService.getPersonById(2))}/>
       </header>
