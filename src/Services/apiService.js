@@ -1,12 +1,14 @@
 
 const BASE_URL = "https://iv1201-rest-server.herokuapp.com/";
 
-class apiService {
+class ApiService {
 
-  static async getPersonById(id){
+  async getPersonById(id){
     return await fetch(BASE_URL + "person/" + id).then(e => e.json());
   }
 
 }
+
+const apiService=new ApiService();
 
 export default apiService;
