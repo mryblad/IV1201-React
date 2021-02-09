@@ -26,6 +26,7 @@ const CreateAccountView=({handleSubmit})=>
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" placeholder="Password" required/><br></br>
         </div>
+        <button type="submit">Create Account</button>
       </div>
       </form>
     </div>
