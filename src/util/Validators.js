@@ -17,7 +17,19 @@ class Validators{
     @throws {AssertionError} If validation fails.
   */
   static isString(str, varName){
-    assert.equal(typeof str, 'string', varName + " must be a string.";
+    assert.equal(typeof str, 'string', varName + " must be a string.");
+  }
+
+  /*
+    checks if the value is null or undefined
+
+    @param {any} obj The value to check
+    @param {string} varName The name of the variable
+
+    @throws {AssertionError} If validation fails.
+  */
+  static isEmpty(obj, varName){
+    assert.equal(obj == null || obj == undefined, false, varName + " must not be null or undefined.")
   }
 
 /*
@@ -29,7 +41,7 @@ class Validators{
   @throws {AssertionError} If validation fails.
 */
   static usernameIsValidLength(str, varName){
-    isString(str, varName);
+    this.isString(str, varName);
     assert.equal(str.length > 0, true, varName + " must be longer than 0 characters.");
     assert.equal(str.length < USERNAME_LIMIT, true, varName + " must be shorter than " + USERNAME_LIMIT + " characters.");
   }
@@ -43,8 +55,10 @@ class Validators{
     @throws {AssertionError} If validation fails.
   */
   static passwordIsValidLength(str, varName){
-    isString(str, varName);
+    this.isString(str, varName);
     assert.equal(str.length > 0, true, varName + " must be longer than 0 characters.");
     assert.equal(str.length < PASSWORD_LIMIT, true, varName + " must be shorter than " + PASSWORD_LIMIT + " characters.");
   }
 }
+
+module.exports = Validators;

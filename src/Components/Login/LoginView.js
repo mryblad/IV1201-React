@@ -3,9 +3,9 @@ const LoginView=({handleSubmit})=>
       <form onSubmit={handleSubmit}>
       <div className="login-from">
         <label>Username</label><br/>
-        <input type="text" name="username" placeholder="Enter Username" required/>
+        <input type="text" name="username" placeholder="Enter Username" required maxLength="16"/>
         <br/><label>Password</label><br/>
-        <input type="password" name="password" placeholder="Enter password" required/>
+        <input type="password" name="password" placeholder="Enter password" required maxLength="24"/>
         <br/><button type="submit">Login</button>
       </div>
       </form>
