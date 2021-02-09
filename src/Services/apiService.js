@@ -17,6 +17,16 @@ class ApiService {
     }).then(response=>response.json());
   }
 
+  login(body){
+    return fetch(BASE_URL+"login",{
+      "method":"POST",
+      "headers":{
+        'Content-Type': 'application/json'
+      },
+      "body":JSON.stringify(body)
+    }).then(response=>response.json());
+  }
+
 }
 
 const apiService=new ApiService();
