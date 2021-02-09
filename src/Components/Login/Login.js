@@ -11,15 +11,16 @@ function Login(){
       console.log("Username: " + e.target.username.value);
       console.log("Password: " + e.target.password.value);
 
-      apiService.login({
-          "username": username,
-          "password": password
-      });
+      if(username && password){
+        apiService.login({
+            "username": username,
+            "password": password
+        });
+      }
+      else{
+        throw new Error("Invalid username or password");
+      }
     }
-
-    useEffect(() => {
-        promise&&promise.then(dt=>setPerson(dt)).catch(er=>setError(er));
-    }, [promise])
 
     return createElement(LoginView,{
         handleSubmit: e => handleSubmit(e)
