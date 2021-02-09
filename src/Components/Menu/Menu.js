@@ -1,8 +1,8 @@
-import {createElement as h} from 'react';
+import {createElement} from 'react';
 import {MenuView} from './MenuView';
 
 function Menu(){
-    return h(MenuView,{});
+    return createElement(MenuView,{});
 }
 
 export {Menu};

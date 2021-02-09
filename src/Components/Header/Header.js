@@ -1,8 +1,8 @@
-import {createElement as h} from 'react';
+import {createElement} from 'react';
 import {HeaderView} from './HeaderView';
 
 function Header(){
-    return h(HeaderView,{});
+    return createElement(HeaderView,{});
 }
 
 export {Header};

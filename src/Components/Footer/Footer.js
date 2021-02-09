@@ -1,8 +1,8 @@
-import {createElement as h} from 'react';
+import {createElement} from 'react';
 import {FooterView} from './FooterView';
 
 function Footer(){
-    return h(FooterView,{});
+    return createElement(FooterView,{});
 }
 
 export {Footer};

@@ -1,12 +1,25 @@
-import {createElement as h} from 'react';
+import {createElement,useState,useEffect} from 'react';
 import {ExampleView} from './ExampleView';
 import apiService from "../../Services/apiService";
 
 function Example(){
-    return h(ExampleView,{
+    const [hej,setHej]=useState("hej");
+    const [person,setPerson]=useState();
+    const [error,setError]=useState();
+    const [promise,setPromise]=useState();
+
+    useEffect(() => {
+        promise&&promise.then(dt=>setPerson(dt)).catch(er=>setError(er));
+    }, [promise])
+
+    return createElement(ExampleView,{
+        hej,
+        changeHej:s=>setHej(s),
+        person,
+        error,
         getPersonById:e=>{
             e.preventDefault();
-            console.log(apiService.getPersonById(e.target.personId.value));
+            setPromise(apiService.getPersonById(e.target.personId.value));
         }
     });
 }
