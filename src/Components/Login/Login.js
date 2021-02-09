@@ -10,26 +10,19 @@ function Login(){
     function handleSubmit(e){
       e.preventDefault();
 
-      var username = e.target.username.value;
-      var password = e.target.password.value;
-      console.log("Username: " + e.target.username.value);
-      console.log("Password: " + e.target.password.value);
+      let username = e.target.username.value;
+      let password = e.target.password.value;
+      console.log("Username: " + username);
+      console.log("Password: " + password);
 
-      //add proper validity check here...
-
-
+      //validate username and password
       Validators.passwordIsValidLength(password, "password");
       Validators.usernameIsValidLength(username, "username");
 
-      if(username && password){
-        console.log(apiService.login({
-            "username": username,
-            "password": password
-        }));
-      }
-      else{
-        throw new Error("Invalid username or password");
-      }
+      console.log(apiService.login({
+          "username": username,
+          "password": password
+      }));
     }
 
     return createElement(LoginView,{
