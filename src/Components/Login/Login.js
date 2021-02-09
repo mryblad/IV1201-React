@@ -3,12 +3,6 @@ import {LoginView} from './LoginView';
 import apiService from "../../Services/apiService";
 
 function Login(){
-    const [hej,setHej]=useState("hej");
-    const [person,setPerson]=useState();
-    const [error,setError]=useState();
-    const [promise,setPromise]=useState();
-
-
     function handleSubmit(e){
       e.preventDefault();
 
