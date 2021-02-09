@@ -20,7 +20,16 @@ function Example(){
         getPersonById:e=>{
             e.preventDefault();
             setPromise(apiService.getPersonById(e.target.personId.value));
-        }
+        },
+        register:()=>console.log(apiService.registerAccount({
+            "name":"Hasse",
+            "surname":"Hansson",
+            "ssn":"1945-05-15",
+            "password":"12345",
+            "email":"hanstastic@hans.com",
+            "role_id":2,
+            "username":"hanshanshans"
+        }))
     });
 }
 
