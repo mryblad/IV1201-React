@@ -12,10 +12,10 @@ function Login(){
       console.log("Password: " + e.target.password.value);
 
       if(username && password){
-        apiService.login({
+        console.log(apiService.login({
             "username": username,
             "password": password
-        });
+        }));
       }
       else{
         throw new Error("Invalid username or password");
