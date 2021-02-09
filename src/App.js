@@ -6,6 +6,7 @@ import {Menu} from './Components/Menu/Menu';
 import {Example} from './Components/Example/Example'
 import {Login} from './Components/Login/Login'
 import {CreateAccount} from './Components/CreateAccount/CreateAccount'
+import {Apply} from './Components/Apply/Apply'
 
 const App=()=>
   <div className="App">
@@ -16,6 +17,7 @@ const App=()=>
           <Route path="/example" component={Example}/>
           <Route path="/login" component={Login}/>
           <Route path="/create" component={CreateAccount}/>
+          <Route path="/apply" component={Apply}/>
       </div>
     </div>
     <Footer/>

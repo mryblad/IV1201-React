@@ -6,6 +6,7 @@ const MenuView=({})=>
             <li><Link to="/example">Example</Link></li>
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/create">Create</Link></li>
+            <li><Link to="/apply">Apply</Link></li>
         </ul>
     </div>
 
