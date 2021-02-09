@@ -5,6 +5,7 @@ import {Footer} from './Components/Footer/Footer';
 import {Menu} from './Components/Menu/Menu';
 import {Example} from './Components/Example/Example'
 import {Login} from './Components/Login/Login'
+import {CreateAccount} from './Components/CreateAccount/CreateAccount'
 
 const App=()=>
   <div className="App">
@@ -15,6 +16,7 @@ const App=()=>
         <BrowserRouter>
           <Route path="/example" component={Example}/>
           <Route path="/login" component={Login}/>
+          <Route path="/create" component={CreateAccount}/>
         </BrowserRouter>
       </div>
     </div>
