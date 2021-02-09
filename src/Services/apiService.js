@@ -3,18 +3,26 @@ const BASE_URL = "https://iv1201-rest-server.herokuapp.com/";
 
 class ApiService {
 
-  getPersonById(id){
-    return fetch(BASE_URL + "person/" + id).then(response => response.json());
-  }
-
-  registerAccount(body){
-    return fetch(BASE_URL+"person",{
-      "method":"POST",
+  apiCall(endpoint,method,body=null){
+    return fetch(BASE_URL+endpoint,{
+      "method":method,
       "headers":{
         'Content-Type': 'application/json'
       },
-      "body":JSON.stringify(body)
+      "body":body?JSON.stringify(body):null
     }).then(response=>response.json());
+  }
+
+  getPersonById(id){
+    return this.apiCall(`person/${id}`,"GET")
+  }
+
+  registerAccount(body){
+    return this.apiCall("person","POST",body);
+  }
+
+  login(body){
+    return this.apiCall("login","POST",body);
   }
 
 }
