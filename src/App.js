@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Link, BrowserRouter } from "react-router-dom";
+import { Route} from "react-router-dom";
 import {Header} from './Components/Header/Header';
 import {Footer} from './Components/Footer/Footer';
 import {Menu} from './Components/Menu/Menu';
@@ -13,11 +13,9 @@ const App=()=>
     <div className="flexParent">
       <Menu/>
       <div className="mainContent">
-        <BrowserRouter>
           <Route path="/example" component={Example}/>
           <Route path="/login" component={Login}/>
           <Route path="/create" component={CreateAccount}/>
-        </BrowserRouter>
       </div>
     </div>
     <Footer/>

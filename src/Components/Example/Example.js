@@ -27,7 +27,6 @@ function Example(){
             "ssn":"1945-05-15",
             "password":"12345",
             "email":"hanstastic@hans.com",
-            "role_id":2,
             "username":"hanshanshans"
         }))
     });
