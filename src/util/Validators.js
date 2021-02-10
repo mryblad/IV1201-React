@@ -1,6 +1,5 @@
-'use strict'
+import { strict as assert } from 'assert';
 
-const assert = require('assert');
 const USERNAME_LIMIT = 16;
 const PASSWORD_LIMIT = 24;
 
@@ -61,4 +60,4 @@ class Validators{
   }
 }
 
-module.exports = Validators;
+export default Validators;
