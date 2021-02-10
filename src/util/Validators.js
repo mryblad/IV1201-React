@@ -1,8 +1,8 @@
-'use strict'
+import { strict as assert } from 'assert';
 
-const assert = require('assert');
 const USERNAME_LIMIT = 16;
 const PASSWORD_LIMIT = 24;
+const STRING_LIMIT = 30;
 
 /*
   Class with validation methods used to validate data.
@@ -59,6 +59,12 @@ class Validators{
     assert.equal(str.length > 0, true, varName + " must be longer than 0 characters.");
     assert.equal(str.length < PASSWORD_LIMIT, true, varName + " must be shorter than " + PASSWORD_LIMIT + " characters.");
   }
+
+  static stringIsValidLength(str, varName) {
+    this.isString(str, varName);
+    assert.equal(str.length > 0, true, varName + " must be longer than 0 characters.");
+    assert.equal(str.length < STRING_LIMIT, true, varName + " must be shorter than " + STRING_LIMIT + " characters.");
+  }
 }
 
-module.exports = Validators;
+export default Validators;

@@ -1,7 +1,7 @@
 import {createElement,useState,useEffect} from 'react';
 import {ApplyView} from './ApplyView';
 import apiService from "../../Services/apiService";
-const Validators = require('../../util/Validators');
+import Validators from "../../util/Validators";
 
 /*
   Handles the application logic and controlls the ApplyView.

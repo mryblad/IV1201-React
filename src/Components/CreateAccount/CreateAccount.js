@@ -1,6 +1,7 @@
 import {createElement} from 'react';
 import {CreateAccountView} from './CreateAccountView';
 import apiService from "../../Services/apiService";
+import Validators = require('../../util/Validators');
 
 function CreateAccount(){
     function handleSubmit(e){
@@ -13,6 +14,11 @@ function CreateAccount(){
       let username = e.target.username.value;
       let password = e.target.password.value;
 
+      Validators.stringIsValidLength(firstName, "name");
+      Validators.stringIsValidLength(lastName, "surname");
+      Validators.stringIsValidLength(ssn, "ssn");
+      Validators.passwordIsValidLength(password, "password");
+      Validators.usernameIsValidLength(username, "username");
 
       console.log(apiService.registerAccount({
             "name": firstName,
