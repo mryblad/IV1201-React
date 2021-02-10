@@ -1,6 +1,6 @@
 'use strict'
 
-const assert = require('assert');
+const assert = require('assert').strict;
 const USERNAME_LIMIT = 16;
 const PASSWORD_LIMIT = 24;
 
