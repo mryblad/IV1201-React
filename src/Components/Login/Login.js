@@ -1,7 +1,7 @@
 import {createElement,useState,useEffect} from 'react';
 import {LoginView} from './LoginView';
 import apiService from "../../Services/apiService";
-const Validators = require('../../util/Validators');
+import Validators from '../../util/Validators';
 
 /*
   Handles the Login logic and controlls the LoginView.
