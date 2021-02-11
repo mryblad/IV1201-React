@@ -9,6 +9,7 @@ function Authorized({value,children}){
         return ()=>window.removeEventListener("storage",callback);
     },[])
 
+    //only checks if token exists or not for now.
     return (token&&value)||(!token&&!value)?children:false;
 }
 
