@@ -11,7 +11,7 @@ import {Authorized} from './Components/Authorized/Authorized';
 
 const App=()=>
   <div className="App">
-    <Authorized>
+    <Authorized value={true}>
       <Header/>
       <div className="flexParent">
         <Menu/>
@@ -23,7 +23,9 @@ const App=()=>
       </div>
       <Footer/>
     </Authorized>
-    <Login/>
+    <Authorized value={false}>
+      <Login/>
+    </Authorized>
   </div>;
 
 export default App;

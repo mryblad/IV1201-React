@@ -2,7 +2,6 @@ import {createElement,useState,useEffect} from 'react';
 import {LoginView} from './LoginView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
-import {user} from '../../Model/User';
 
 /*
   Handles the Login logic and controlls the LoginView.
@@ -23,6 +22,14 @@ function Login(){
       apiService.login({
           "username": username,
           "password": password
+      }).then(response => {
+        console.log(response);
+        //save token as cookie...
+        if(response.success){
+          window.localStorage.setItem("authToken", response.success.token);
+          window.dispatchEvent(new Event('storage'));
+          console.log("setting token...");
+        }
       });
     }
 

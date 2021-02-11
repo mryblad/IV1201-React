@@ -7,7 +7,8 @@ class ApiService {
     return fetch(BASE_URL+endpoint,{
       "method":method,
       "headers":{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer " + window.localStorage.getItem("authToken")
       },
       "body":body?JSON.stringify(body):null
     }).then(response=>response.json());
