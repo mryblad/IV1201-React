@@ -11,7 +11,13 @@ class ApiService {
         'Authorization': "Bearer " + window.localStorage.getItem("authToken")
       },
       "body":body?JSON.stringify(body):null
-    }).then(response=>response.json());
+    }).then(response => response.json()).then(r => {
+      if(r.error && r.error.includes("Unauthorized")){
+        console.log("redirecting to login...");
+        window.location.pathname = "/login";
+      }
+      return r;
+    });
   }
 
   getPersonById(id){

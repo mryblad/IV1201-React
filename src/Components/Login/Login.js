@@ -28,6 +28,7 @@ function Login(){
         if(response.success){
           window.localStorage.setItem("authToken", response.success.token);
           console.log("setting token...");
+          window.location.pathname = "/example";
         }
       });
     }
