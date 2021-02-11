@@ -1,7 +1,7 @@
 import {createElement} from 'react';
 import {CreateAccountView} from './CreateAccountView';
 import apiService from "../../Services/apiService";
-import Validators = require('../../util/Validators');
+import Validators from '../../util/Validators';
 
 function CreateAccount(){
     function handleSubmit(e){

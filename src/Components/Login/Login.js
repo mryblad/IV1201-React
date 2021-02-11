@@ -19,10 +19,17 @@ function Login(){
       Validators.passwordIsValidLength(password, "password");
       Validators.usernameIsValidLength(username, "username");
 
-      console.log(apiService.login({
+      apiService.login({
           "username": username,
           "password": password
-      }));
+      }).then(response => {
+        console.log(response);
+        //save token as cookie...
+        if(response.success){
+          window.localStorage.setItem("authToken", response.success.token);
+          console.log("setting token...");
+        }
+      });
     }
 
     return createElement(LoginView,{
