@@ -2,6 +2,7 @@ import {createElement,useState,useEffect} from 'react';
 import {LoginView} from './LoginView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
+import {user} from '../../Model/User';
 
 /*
   Handles the Login logic and controlls the LoginView.
@@ -19,10 +20,10 @@ function Login(){
       Validators.passwordIsValidLength(password, "password");
       Validators.usernameIsValidLength(username, "username");
 
-      console.log(apiService.login({
+      apiService.login({
           "username": username,
           "password": password
-      }));
+      });
     }
 
     return createElement(LoginView,{
