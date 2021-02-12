@@ -1,5 +1,5 @@
 import './App.css';
-import { Route} from "react-router-dom";
+import {Switch, Route, Redirect} from "react-router-dom";
 import {Header} from './Components/Header/Header';
 import {Footer} from './Components/Footer/Footer';
 import {Menu} from './Components/Menu/Menu';
@@ -16,15 +16,21 @@ const App=()=>
       <div className="flexParent">
         <Menu/>
         <div className="mainContent">
+          <Switch>
             <Route path="/example" component={Example}/>
             <Route path="/create" component={CreateAccount}/>
             <Route path="/apply" component={Apply}/>
+            <Redirect to="/"/>
+          </Switch>
         </div>
       </div>
       <Footer/>
     </Authorized>
     <Authorized value={false}>
-      <Login/>
+      <Switch>
+        <Route exact path="/" component={Login}/>
+        <Redirect to="/"/>
+      </Switch>
     </Authorized>
   </div>;
 
