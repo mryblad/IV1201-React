@@ -7,6 +7,9 @@ import Validators from '../../util/Validators';
   Handles the Login logic and controlls the LoginView.
 */
 function Login(){
+    /*
+      Handles what happens when the login form is submitted.
+    */
     function handleSubmit(e){
       e.preventDefault();
 

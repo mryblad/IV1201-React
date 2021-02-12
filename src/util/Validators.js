@@ -60,6 +60,14 @@ class Validators{
     assert.equal(str.length < PASSWORD_LIMIT, true, varName + " must be shorter than " + PASSWORD_LIMIT + " characters.");
   }
 
+  /*
+    Checks if the length of the incoming string is inside the valid length of a name or surname
+
+    @param {any} str The name to check
+    @param {string} varName The name of the variable
+
+    @throws {AssertionError} If validation fails.
+  */
   static stringIsValidLength(str, varName) {
     this.isString(str, varName);
     assert.equal(str.length > 0, true, varName + " must be longer than 0 characters.");

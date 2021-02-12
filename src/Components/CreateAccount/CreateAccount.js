@@ -3,7 +3,13 @@ import {CreateAccountView} from './CreateAccountView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
 
+/*
+  Handles the create account logic and controlls the CreateAccountView.
+*/
 function CreateAccount(){
+    /*
+      Handles what happens when the create account form is submitted.
+    */
     function handleSubmit(e){
       e.preventDefault();
 
