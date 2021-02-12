@@ -30,6 +30,7 @@ function Login(){
         //save token as cookie...
         if(response.success){
           window.localStorage.setItem("authToken", response.success.token);
+          window.dispatchEvent(new Event('storage'));
           console.log("setting token...");
         }
       });
