@@ -15,6 +15,8 @@ function Login(){
     function handleSubmit(e){
       e.preventDefault();
 
+      console.log(e.target)
+
       let username = e.target.username.value;
       let password = e.target.password.value;
       console.log("Username: " + username);
@@ -37,8 +39,20 @@ function Login(){
       });
     }
 
+    let formDisplay = {login: "block", forgotPassword: "none"};
+    function toggleForgot(e){
+      e.preventDefault();
+      console.log(formDisplay);
+      let temp = formDisplay.login;
+      formDisplay.login = formDisplay.forgotPassword;
+      formDisplay.forgotPassword = temp;
+      return formDisplay;
+    }
+
     return createElement(LoginView,{
-        handleSubmit: e => handleSubmit(e)
+        handleSubmit: e => handleSubmit(e),
+        toggleForgot: e => toggleForgot(e),
+        formDisplay: formDisplay
     });
 }
 
