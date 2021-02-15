@@ -8,6 +8,8 @@ import Validators from '../../util/Validators';
  * Handles the Login logic and controlls the LoginView.
  */
 function Login(){
+  const [formDisplay, setformDisplay]= useState({login: "block", forgotPassword: "none"});
+
    /**
     * Handles what happens when the login form is submitted.
     * @param {HTML form} e The form that was submitted.
@@ -39,14 +41,14 @@ function Login(){
       });
     }
 
-    let formDisplay = {login: "block", forgotPassword: "none"};
     function toggleForgot(e){
       e.preventDefault();
       console.log(formDisplay);
-      let temp = formDisplay.login;
-      formDisplay.login = formDisplay.forgotPassword;
-      formDisplay.forgotPassword = temp;
-      return formDisplay;
+      let tempObj = {
+        login: formDisplay.forgotPassword,
+        forgotPassword: formDisplay.login
+      }
+      setformDisplay(tempObj);
     }
 
     return createElement(LoginView,{
