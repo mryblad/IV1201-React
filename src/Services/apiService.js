@@ -1,16 +1,14 @@
 
 const BASE_URL = "https://iv1201-rest-server.herokuapp.com/";
-
-/*
-  Class with methods used for API calls.
-*/
+/**
+ * Class with methods used for API calls.
+ */
 class ApiService {
-  /*
-    general method used for API calls, uses JSON format
-
-    @param {string} endpoint Specifies the endpoint
-    @param {string} method The method to use, for example GET or POST
-    @param {any} body The body of the request
+ /**
+  * general method used for API calls, uses JSON format
+  * @param {string} endpoint Specifies the endpoint
+  * @param {string} method The method to use, for example GET or POST
+  * @param {any} body The body of the request
   */
   apiCall(endpoint,method,body=null){
     return fetch(BASE_URL+endpoint,{
@@ -23,28 +21,36 @@ class ApiService {
     }).then(response=>response.json());
   }
 
-  /*
-    API call to get a person from the database with a specific ID
+ /**
+  * API call to check if the current authToken local storage is a valid token
+  * @return {object} The resolved json fetch response
+  */
+  checkTokenValidity(){
+    return this.apiCall("login/check_validity","GET");
+  }
 
-    @param {number} id The ID for a person
+ /**
+  * API call to get a person from the database with a specific ID
+  * @param {number} id The ID for a person
+  * @return {object} The resolved json fetch response
   */
   getPersonById(id){
     return this.apiCall(`person/${id}`,"GET")
   }
 
-  /*
-    sends data about a person that was used when creating an account
-
-    @param {any} body The body of the request
+ /**
+  * sends data about a person that was used when creating an account
+  * @param {any} body The body of the request
+  * @return {object} The resolved json fetch response
   */
   registerAccount(body){
     return this.apiCall("person","POST",body);
   }
 
-  /*
-    sends data used when logging in
-
-    @param {any} body The body of the request
+ /**
+  * sends data used when logging in
+  * @param {any} body The body of the request
+  * @return {object} The resolved json fetch response
   */
   login(body){
     return this.apiCall("login","POST",body);

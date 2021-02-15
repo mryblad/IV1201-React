@@ -2,6 +2,9 @@ import {createElement,useState,useEffect} from 'react';
 import {ExampleView} from './ExampleView';
 import apiService from "../../Services/apiService";
 
+/**
+ * Presenter for example used to test functionality that is in development
+ */
 function Example(){
     const [hej,setHej]=useState("hej");
     const [person,setPerson]=useState();

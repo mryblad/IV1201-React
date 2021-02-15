@@ -3,12 +3,14 @@ import {LoginView} from './LoginView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
 
-/*
-  Handles the Login logic and controlls the LoginView.
-*/
+
+/**
+ * Handles the Login logic and controlls the LoginView.
+ */
 function Login(){
-    /*
-      Handles what happens when the login form is submitted.
+   /**
+    * Handles what happens when the login form is submitted.
+    * @param {HTML form} e The form that was submitted.
     */
     function handleSubmit(e){
       e.preventDefault();
@@ -27,7 +29,6 @@ function Login(){
           "password": password
       }).then(response => {
         console.log(response);
-        //save token as cookie...
         if(response.success){
           window.localStorage.setItem("authToken", response.success.token);
           window.dispatchEvent(new Event('storage'));

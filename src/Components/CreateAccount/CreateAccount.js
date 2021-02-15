@@ -4,12 +4,15 @@ import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
 
 /*
-  Handles the create account logic and controlls the CreateAccountView.
+*  Presenter for CreateAccountView view that
+*  handles the create account logic and controls the CreateAccountView.
 */
 function CreateAccount(){
-    /*
-      Handles what happens when the create account form is submitted.
-    */
+    /**
+     * Handles what happens when the create account form is submitted.
+     *
+     * @param {HTML form} e The form that was submitted.
+     */
     function handleSubmit(e){
       e.preventDefault();
 
