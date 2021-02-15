@@ -1,4 +1,4 @@
-import {createElement,useState,useEffect} from 'react';
+import {createElement, useState} from 'react';
 import {LoginView} from './LoginView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
@@ -16,34 +16,55 @@ function Login(){
     */
     function handleSubmit(e){
       e.preventDefault();
+      let username, password, email;
 
-      console.log(e.target)
+      if(e.target.username && e.target.password){
+        username = e.target.username.value;
+        password = e.target.password.value;
+        login();
+      }
+      else if(e.target.email){
+        email = e.target.email.value;
+        forgotPassword();
+      }
+      else{
+        return new Error("invalid input");
+      }
 
-      let username = e.target.username.value;
-      let password = e.target.password.value;
-      console.log("Username: " + username);
-      console.log("Password: " + password);
 
-      //validate username and password
-      Validators.passwordIsValidLength(password, "password");
-      Validators.usernameIsValidLength(username, "username");
+      function login(){
+        console.log("Username: " + username);
+        console.log("Password: " + password);
 
-      apiService.login({
-          "username": username,
-          "password": password
-      }).then(response => {
-        console.log(response);
-        if(response.success){
-          window.localStorage.setItem("authToken", response.success.token);
-          window.dispatchEvent(new Event('storage'));
-          console.log("setting token...");
-        }
-      });
+        //validate username and password
+        Validators.passwordIsValidLength(password, "password");
+        Validators.usernameIsValidLength(username, "username");
+
+        apiService.login({
+            "username": username,
+            "password": password
+        }).then(response => {
+          console.log(response);
+          if(response.success){
+            window.localStorage.setItem("authToken", response.success.token);
+            window.dispatchEvent(new Event('storage'));
+            console.log("setting token...");
+          }
+        });
+      }
+
+      function forgotPassword(){
+        console.log("forgot password API not implemented");
+        console.log("Email: " + email);
+      }
     }
 
+    /**
+     * Toggles between showing the login form and the forgot password form.
+     * @param  {[type]} e The button that was pressed.
+     */
     function toggleForgot(e){
       e.preventDefault();
-      console.log(formDisplay);
       let tempObj = {
         login: formDisplay.forgotPassword,
         forgotPassword: formDisplay.login

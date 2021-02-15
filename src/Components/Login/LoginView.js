@@ -14,6 +14,7 @@ const LoginView=({handleSubmit, toggleForgot, formDisplay})=>
           <label>Email</label><br/>
           <input type="email" name="email" placeholder="Enter Email" required maxLength="24"/>
           <br/><button type="submit">Request password reset</button>
+          <br/><br/><br/>
           </form>
       </div>
       <br/><button onClick={toggleForgot}>Forgot password?</button>

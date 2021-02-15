@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 
-const MenuView=({})=>
+const MenuView=()=>
     <div className="menu">
         <ul>
             <li><Link to="/example">Example</Link></li>
