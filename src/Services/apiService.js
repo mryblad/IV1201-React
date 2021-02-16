@@ -1,5 +1,6 @@
 
 const BASE_URL = "https://iv1201-rest-server.herokuapp.com/";
+
 /**
  * Class with methods used for API calls.
  */
@@ -21,12 +22,29 @@ class ApiService {
     }).then(response=>response.json());
   }
 
+  /**
+   * Sends a request to the REST server to reset the user's password.
+   * @param {[type]} email The email linked to the account.
+   */
+   resetPassword(email){
+     return this.apiCall("forgotpassword/" + email, "GET");
+   }
+
+   /**
+    * Sets a new password for the user's account based on email encapsulated in the token.
+    * @param {[type]} password The new password to set
+    * @param {[type]} token The verification token received
+    */
+   setPassword({password, token}){
+     return this.apiCall("setpassword/", "POST", {"password": password, "token": token});
+   }
+
  /**
   * API call to check if the current authToken local storage is a valid token
   * @return {object} The resolved json fetch response
   */
   checkTokenValidity(){
-    return this.apiCall("login/check_validity","GET");
+    return this.apiCall("login/check_validity", "GET");
   }
 
  /**

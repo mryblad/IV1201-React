@@ -5,6 +5,8 @@ import {Footer} from './Components/Footer/Footer';
 import {Menu} from './Components/Menu/Menu';
 import {Example} from './Components/Example/Example';
 import {Login} from './Components/Login/Login';
+import {ForgotPassword} from './Components/ForgotPassword/ForgotPassword';
+import {SetPassword} from './Components/SetPassword/SetPassword';
 import {CreateAccount} from './Components/CreateAccount/CreateAccount';
 import {Apply} from './Components/Apply/Apply';
 import {Authorized} from './Components/Authorized/Authorized';
@@ -28,6 +30,8 @@ const App=()=>
     </Authorized>
     <Authorized value={false}>
       <Switch>
+        <Route exact path="/forgotpassword" component={ForgotPassword}/>
+        <Route exact path="/setpassword/:token" component={SetPassword}/>
         <Route exact path="/" component={Login}/>
         <Redirect to="/"/>
       </Switch>
