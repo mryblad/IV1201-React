@@ -25,6 +25,7 @@ function CreateAccount(){
 
       Validators.stringIsValidLength(firstName, "name");
       Validators.stringIsValidLength(lastName, "surname");
+      Validators.isEmailValid(email);
       Validators.stringIsValidLength(ssn, "ssn");
       Validators.passwordIsValidLength(password, "password");
       Validators.usernameIsValidLength(username, "username");

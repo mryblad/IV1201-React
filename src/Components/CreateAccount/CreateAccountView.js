@@ -4,11 +4,11 @@ const CreateAccountView=({handleSubmit})=>
       <div className="create-form">
         <div className="firstName">
           <label htmlFor="firstName">First name:</label>
-          <input type="text" id="firstName" name="firstName" placeholder="First name" required/><br></br>
+          <input type="text" id="firstName" name="firstName" placeholder="First name" required maxLength="20"/><br></br>
         </div>
         <div className="lastName">
           <label htmlFor="lastName">Last name:</label>
-          <input type="text" id="lastName" name="lastName" placeholder="Last name" required/><br></br>
+          <input type="text" id="lastName" name="lastName" placeholder="Last name" required maxLength="20"/><br></br>
         </div>
         <div className="email">
           <label htmlFor="email">Email:</label>
@@ -16,15 +16,15 @@ const CreateAccountView=({handleSubmit})=>
         </div>
         <div className="ssn">
           <label htmlFor="ssn">Social security number:</label>
-          <input type="text" id="ssn" name="ssn" placeholder="YYMMDDXXXX" required/><br></br>
+          <input type="text" id="ssn" name="ssn" placeholder="YYMMDDXXXX" required maxLength="20"/><br></br>
         </div>
         <div className="username">
           <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" placeholder="Username" required/><br></br>
+          <input type="text" id="username" name="username" placeholder="Username" required maxLength="16"/><br></br>
         </div>
         <div className="password">
           <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" placeholder="Password" required/><br></br>
+          <input type="password" id="password" name="password" placeholder="Password" required maxLength="24"/><br></br>
         </div>
         <button type="submit">Create Account</button>
       </div>

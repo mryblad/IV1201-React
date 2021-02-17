@@ -2,7 +2,7 @@ import { strict as assert } from 'assert';
 
 const USERNAME_LIMIT = 16;
 const PASSWORD_LIMIT = 24;
-const STRING_LIMIT = 30;
+const STRING_LIMIT = 20;
 
 /**
  * Class with validation methods used to validate data.
@@ -62,6 +62,16 @@ class Validators{
     this.isString(str, varName);
     assert.equal(str.length > 0, true, varName + " must be longer than 0 characters.");
     assert.equal(str.length < STRING_LIMIT, true, varName + " must be shorter than " + STRING_LIMIT + " characters.");
+  }
+
+  /**
+   * Checks if the input is a valid email
+   * @param {email} emailInput The input to check
+   * @throws {AssertionError} If validation fails.
+   */
+  static isEmailValid(emailInput) {
+    let emailForm = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    assert(emailForm.test(emailInput));
   }
 }
 
