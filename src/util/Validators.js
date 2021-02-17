@@ -63,6 +63,16 @@ class Validators{
     assert.equal(str.length > 0, true, varName + " must be longer than 0 characters.");
     assert.equal(str.length < STRING_LIMIT, true, varName + " must be shorter than " + STRING_LIMIT + " characters.");
   }
+
+  /**
+   * Checks if the input is a valid email
+   * @param {email} emailInput The input to check
+   * @throws {AssertionError} If validation fails.
+   */
+  static isEmailValid(emailInput) {
+    let emailForm = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    assert(emailForm.test(emailInput));
+  }
 }
 
 export default Validators;
