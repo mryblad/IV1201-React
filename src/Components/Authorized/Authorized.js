@@ -25,7 +25,10 @@ function Authorized({value,children}){
       apiService.checkTokenValidity().then(r => {
         if(r.success)
           setCheckedToken(r.success)
-      }).catch(err => console.error("Old token is invalid")); //+ redirect to login?
+      }).catch(err => {
+        setCheckedToken(null);
+        console.error("Old token is invalid");
+      }); //+ redirect to login?
     },[token])
 
     return (checkedToken&&value)||(!checkedToken&&!value)?children:false;

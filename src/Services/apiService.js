@@ -74,6 +74,15 @@ class ApiService {
     return this.apiCall("login","POST",body);
   }
 
+  /**
+  * sends data used when logging in
+  * @param {any} body The body of the request
+  * @return {object} The resolved json fetch response
+  */
+ getApplications(){
+  return this.apiCall("application","GET");
+}
+
 }
 
 const apiService=new ApiService();
