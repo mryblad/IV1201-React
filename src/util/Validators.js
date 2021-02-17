@@ -2,7 +2,7 @@ import { strict as assert } from 'assert';
 
 const USERNAME_LIMIT = 16;
 const PASSWORD_LIMIT = 24;
-const STRING_LIMIT = 30;
+const STRING_LIMIT = 20;
 
 /**
  * Class with validation methods used to validate data.
