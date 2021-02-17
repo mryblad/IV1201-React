@@ -5,8 +5,11 @@ import {Footer} from './Components/Footer/Footer';
 import {Menu} from './Components/Menu/Menu';
 import {Example} from './Components/Example/Example';
 import {Login} from './Components/Login/Login';
+import {ForgotPassword} from './Components/ForgotPassword/ForgotPassword';
+import {SetPassword} from './Components/SetPassword/SetPassword';
 import {CreateAccount} from './Components/CreateAccount/CreateAccount';
 import {Apply} from './Components/Apply/Apply';
+import {ListApplications} from './Components/ListApplications/ListApplications';
 import {Authorized} from './Components/Authorized/Authorized';
 
 const App=()=>
@@ -20,6 +23,7 @@ const App=()=>
             <Route path="/example" component={Example}/>
             <Route path="/create" component={CreateAccount}/>
             <Route path="/apply" component={Apply}/>
+            <Route path="/applications" component={ListApplications}/>
             <Redirect to="/"/>
           </Switch>
         </div>
@@ -28,6 +32,8 @@ const App=()=>
     </Authorized>
     <Authorized value={false}>
       <Switch>
+        <Route exact path="/forgotpassword" component={ForgotPassword}/>
+        <Route exact path="/setpassword/:token" component={SetPassword}/>
         <Route exact path="/" component={Login}/>
         <Redirect to="/"/>
       </Switch>

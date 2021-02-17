@@ -1,6 +1,7 @@
-const LoginView=({handleSubmit, toggleForgot, formDisplay})=>
+import {Link} from 'react-router-dom';
+const LoginView=({handleSubmit})=>
     <div>
-      <div className="login-from" style={{display: formDisplay.login}}>
+      <div className="login-from">
         <form onSubmit={handleSubmit}>
           <label>Username</label><br/>
           <input type="text" name="username" placeholder="Enter Username" required maxLength="16"/>
@@ -9,15 +10,7 @@ const LoginView=({handleSubmit, toggleForgot, formDisplay})=>
           <br/><button type="submit">Login</button>
         </form>
       </div>
-      <div className="forgotPassword-from" style={{display: formDisplay.forgotPassword}}>
-        <form onSubmit={handleSubmit}>
-          <label>Email</label><br/>
-          <input type="email" name="email" placeholder="Enter Email" required maxLength="24"/>
-          <br/><button type="submit">Request password reset</button>
-          <br/><br/><br/>
-          </form>
-      </div>
-      <br/><button onClick={toggleForgot}>Forgot password?</button>
+      <p>Have you forgot your password or can't login to an old account? Click <Link to="/forgotPassword">here</Link></p>
     </div>
 
 export {LoginView};
