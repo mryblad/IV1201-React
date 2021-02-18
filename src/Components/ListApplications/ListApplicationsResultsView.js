@@ -1,4 +1,4 @@
-const ListApplicationsResultsView=({applications,error})=>
+const ListApplicationsResultsView=({applications,error,handleRowClick})=>
     <div>
         {error?<div>
             Could not get applications
@@ -12,7 +12,7 @@ const ListApplicationsResultsView=({applications,error})=>
             </thead>
             <tbody>
                 {applications&&applications.map(application=>
-                <tr key={application.availability_id}>
+                <tr key={application.availability_id} onClick={()=>handleRowClick(application)}>
                     <td>{application.person.name} {application.person.surname}</td>
                     <td>{application.createdAt}</td>
                 </tr>)}

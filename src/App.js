@@ -10,6 +10,7 @@ import {UpdatePerson} from './Components/UpdatePerson/UpdatePerson';
 import {CreateAccount} from './Components/CreateAccount/CreateAccount';
 import {Apply} from './Components/Apply/Apply';
 import {ListApplications} from './Components/ListApplications/ListApplications';
+import {ShowApplication} from './Components/ShowApplication/ShowApplication';
 import {Authorized} from './Components/Authorized/Authorized';
 
 const App=()=>
@@ -24,6 +25,7 @@ const App=()=>
             <Route path="/create" component={CreateAccount}/>
             <Route path="/apply" component={Apply}/>
             <Route path="/applications" component={ListApplications}/>
+            <Route path="/applicationdetails" component={ShowApplication}/>
             <Route path="/updateperson" component={UpdatePerson}/>
             <Redirect to="/"/>
           </Switch>
