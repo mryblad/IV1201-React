@@ -28,7 +28,7 @@ function Authorized({value,children}){
       }).catch(err => {
         setCheckedToken(null);
         console.error("Old token is invalid");
-      }); //+ redirect to login?
+      });
     },[token])
 
     return (checkedToken&&value)||(!checkedToken&&!value)?children:false;

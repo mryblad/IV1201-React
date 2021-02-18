@@ -30,3 +30,13 @@ html,body,#root,.App{
   height: 100%;
   flex:1;
 }
+
+tr{
+  border: 2px solid black;
+  background-color: #eee;
+}
+
+tr:hover{
+  background-color: #aaa;
+  cursor: pointer;
+}

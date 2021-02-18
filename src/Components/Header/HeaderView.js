@@ -1,10 +1,7 @@
-const HeaderView=()=>
+const HeaderView=({logOut})=>
     <div className="header">
         This is a header
-        <br/><button onClick={() => {
-          console.log("test");
-          window.localStorage.removeItem("authToken");
-        }}>Logout</button>
+        <br/><button onClick={logOut}>Logout</button>
     </div>
 
 export {HeaderView};
