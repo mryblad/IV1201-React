@@ -17,7 +17,8 @@
     "build": "react-scripts build",
     "test": "jest",
     "test:watch": "jest --watch",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**"
   },
   "eslintConfig": {
     "extends": [
@@ -38,6 +39,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.12.16"
+    "@babel/preset-env": "^7.12.16",
+    "eslint": "^7.20.0",
+    "eslint-plugin-react": "^7.22.0"
   }
 }
