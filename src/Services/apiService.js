@@ -75,8 +75,8 @@ class ApiService {
   }
 
   /**
-  * sends data used when logging in
-  * @param {any} body The body of the request
+  * gets an array of applications
+  * 
   * @return {object} The resolved json fetch response
   */
  getApplications(){

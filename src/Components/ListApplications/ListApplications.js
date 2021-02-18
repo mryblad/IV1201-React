@@ -1,4 +1,5 @@
 import {createElement,useState,useEffect,Fragment} from 'react';
+import {useHistory} from 'react-router-dom';
 import {ListApplicationsResultsView} from './ListApplicationsResultsView';
 import {ListApplicationsSearchView} from './ListApplicationsSearchView';
 import apiService from "../../Services/apiService";
@@ -12,6 +13,7 @@ function ListApplications(){
     const [applications,setApplications]=useState();
     const [error,setError]=useState();
     const [filter,setFilter]=useState();
+    const history=useHistory();
 
     useEffect(()=>{
         promise&&promise.then(dt=>dt.success).then(unfiltered=>{
@@ -49,6 +51,12 @@ function ListApplications(){
         createElement(ListApplicationsResultsView,{
             applications,
             error,
+            handleRowClick:application=>{
+                history.push({
+                    pathname:'applicationdetails',
+                    application,
+                });
+            }
         })
     );
 }
