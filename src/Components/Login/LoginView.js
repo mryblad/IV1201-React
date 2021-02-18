@@ -10,7 +10,7 @@ const LoginView=({handleSubmit})=>
           <br/><button type="submit">Login</button>
         </form>
       </div>
-      <p>Have you forgot your password or can't login to an old account? Click <Link to="/forgotPassword">here</Link></p>
+      <p>Have you forgot your password or can{'\''}t login to an old account? Click <Link to="/forgotPassword">here</Link></p>
     </div>
 
 export {LoginView};
