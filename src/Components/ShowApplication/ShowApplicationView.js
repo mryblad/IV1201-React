@@ -1,4 +1,4 @@
-const ShowApplicationView=({application,acceptHandler,rejectHandler})=>
+const ShowApplicationView=({application,handler})=>
     <div>
         <div>Name: {application.person.name} {application.person.surname}</div>
         <br/>
@@ -13,8 +13,8 @@ const ShowApplicationView=({application,acceptHandler,rejectHandler})=>
         <div>Application submitted on: {application.createdAt?application.createdAt:"No submission date"}</div>
         <div>Status: {application.application_status?application.application_status:"Unhandled"}</div>
         <div>
-            <button onClick={acceptHandler}>Accept</button>
-            <button onClick={rejectHandler}>Reject</button>
+            <button onClick={()=>handle("accepted")}>Accept</button>
+            <button onClick={()=>handler("rejected")}>Reject</button>
         </div>
     </div>
 

@@ -79,8 +79,17 @@ class ApiService {
   * 
   * @return {object} The resolved json fetch response
   */
- getApplications(){
-  return this.apiCall("application","GET");
+  getApplications(){
+    return this.apiCall("application","GET");
+  }
+
+  /**
+  * handles an application
+  * 
+  * @return {object} The resolved json fetch response
+  */
+ handleApplication(id,body){
+  return this.apiCall(`application/${id}`,"PUT",body);
 }
 
 }
