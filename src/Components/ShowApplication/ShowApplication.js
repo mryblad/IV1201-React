@@ -1,4 +1,5 @@
 import {createElement} from 'react';
+import {useHistory} from 'react-router-dom';
 import {ShowApplicationView} from './ShowApplicationView';
 import apiService from '../../Services/apiService';
 
@@ -6,6 +7,9 @@ import apiService from '../../Services/apiService';
  * ShowApplication presenter
  */
 function ShowApplication(props){
+
+    const history=useHistory();
+
     return createElement(ShowApplicationView,{
         application:props.location.application,
         handle:application_status=>{
@@ -13,6 +17,7 @@ function ShowApplication(props){
                 application_status
             })
             alert("application "+application_status);
+            history.goBack();
         }
     });
 }
