@@ -82,7 +82,7 @@ class ApiService {
 
   /**
   * gets an array of applications
-  * 
+  *
   * @return {object} The resolved json fetch response
   */
   getApplications(){
