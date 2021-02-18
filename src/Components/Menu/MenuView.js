@@ -9,6 +9,7 @@ const MenuView=()=>
             <li><Link to="/create">Create</Link></li>
             <li><Link to="/apply">Apply</Link></li>
             <li><Link to="/applications">Applications</Link></li>
+            <li><Link to="/updateperson">Update Person</Link></li>
         </ul>
     </div>
 
