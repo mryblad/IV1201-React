@@ -5,7 +5,7 @@ const ShowApplicationView=({application,handle})=>
         <div>Competences:</div>
         {application.person.competence_profiles.map((competenceProfile,i)=>
         <div key={i}>
-            <span>Type: {competenceProfile.competence.name_se} Years of Experience: {competenceProfile.years_of_experience}</span>
+            <span>Type: {competenceProfile.competence.competence_translations[0].translation} Years of Experience: {competenceProfile.years_of_experience}</span>
         </div>)}
         <br/>
         <div>Can work from: {application.from_date} to: {application.to_date}</div>
