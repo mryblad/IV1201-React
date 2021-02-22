@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import {UpdatePersonView} from './UpdatePersonView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
-
+import {Translations} from './../../util/Translations'
 
 /**
  * Handles the Login logic and controlls the LoginView.
@@ -11,8 +11,10 @@ import Validators from '../../util/Validators';
 function UpdatePerson(){
   let token = useParams().token;
 
+  let infoTextTranslations = Translations[localStorage.getItem("language") || "en"].updatePerson.infoText;
+
   const [missingFields,setMissingFields]=useState({});
-  const [infoText,setInfoText]=useState("Please fill out this information to continue");
+  const [infoText,setInfoText]=useState(infoTextTranslations.fillGeneralInfoText);
   const [promise,setPromise]=useState(apiService.getEmptyFields(token));
 
   //console.log("(Param) Token found: " + token);
@@ -25,7 +27,7 @@ function UpdatePerson(){
           setMissingFields(e.success.emptyFields);
         else{ //nothing is missing, means change password.
           setMissingFields({"password": true});
-          setInfoText("Set new password");
+          setInfoText(infoTextTranslations.setPasswordText);
         }
       }
     }).catch(console.error);
@@ -74,6 +76,7 @@ function UpdatePerson(){
         handleSubmit: e => handleSubmit(e),
         handleEmpty: e => handleEmpty(e),
         infoText: infoText,
+        translations: Translations[localStorage.getItem("language") || "en"].updatePerson,
     });
 }
 

@@ -1,5 +1,6 @@
 import {createElement} from 'react';
 import {HeaderView} from './HeaderView';
+import {Translations} from './../../util/Translations'
 
 /**
  * Header presenter
@@ -9,7 +10,8 @@ function Header(){
         logOut:()=>{
             window.localStorage.removeItem("authToken");
             window.dispatchEvent(new Event('storage'));
-        }
+        },
+        translations: Translations[localStorage.getItem("language") || "en"].header,
     });
 }
 

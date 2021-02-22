@@ -3,7 +3,7 @@ import {LoginView} from './LoginView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
 import {useHistory} from 'react-router-dom';
-
+import {Translations} from './../../util/Translations'
 
 /**
  * Handles the Login logic and controlls the LoginView.
@@ -66,6 +66,7 @@ function Login(){
 
     return createElement(LoginView,{
         handleSubmit: e => handleSubmit(e),
+        translations: Translations[localStorage.getItem("language") || "en"].login,
     });
 }
 

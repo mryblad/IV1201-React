@@ -2,6 +2,7 @@ import {createElement} from 'react';
 import {ForgotPasswordView} from './ForgotPasswordView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
+import {Translations} from './../../util/Translations'
 
 
 /**
@@ -23,6 +24,7 @@ function ForgotPassword(){
 
     return createElement(ForgotPasswordView,{
         handleSubmit: e => handleSubmit(e),
+        translations: Translations[localStorage.getItem("language") || "en"].forgotPassword,
     });
 }
 

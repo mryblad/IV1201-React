@@ -2,6 +2,7 @@ import {createElement} from 'react';
 import {CreateAccountView} from './CreateAccountView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
+import {Translations} from './../../util/Translations'
 
 /*
 *  Presenter for CreateAccountView view that
@@ -41,7 +42,8 @@ function CreateAccount(){
     }
 
     return createElement(CreateAccountView,{
-        handleSubmit: e => handleSubmit(e)
+        handleSubmit: e => handleSubmit(e),
+        translations: Translations[localStorage.getItem("language") || "en"].createAccount,
     });
 }
 

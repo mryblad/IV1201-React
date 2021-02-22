@@ -1,6 +1,6 @@
-const FooterView=()=>
+const FooterView=({translations})=>
     <div className="footer">
-        This is a footer
+        {translations.footerText}
     </div>
 
 export {FooterView};

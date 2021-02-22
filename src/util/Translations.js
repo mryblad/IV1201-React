@@ -1,0 +1,161 @@
+
+export const Translations = {
+  "en": {
+    "header": {
+      headerText: "This is a header",
+      logoutButton: "Logout",
+    },
+    "footer": {
+      footerText: "This is a footer",
+    },
+    "menu": {
+      example: "Example",
+      login: "Login",
+      forgotPassword: "Forgot Password",
+      create: "Create",
+      apply: "Apply",
+      applications: "Applications",
+      updatePerson: "Update Person",
+    },
+    "login": {
+      username: "Username",
+      enterUsername: "Enter Username",
+      password: "Password",
+      enterPassword: "Enter Password",
+      login: "Login",
+      loginText: {
+        beforeLink: "Have you forgot your password or can't login to an old account? Click ",
+        afterLink: "here",
+      },
+    },
+    "forgotPassword": {
+      description: {
+        line1: "Have you forgot your password or cannot access an old account?",
+        line2: "Enter your email to reset your password.",
+      },
+      email: "Email",
+      enterEmail: "Enter Email",
+      resetPassword: "Reset Password",
+    },
+    "createAccount": {
+      firstName: "First Name",
+      lastName: "Last Name",
+      email: "Email",
+      ssn: "Social Security Number",
+      username: "Username",
+      password: "Password",
+      createAccount: "Create Account",
+      placeholder: {
+        email: "example@email.com",
+        ssn: "YYMMDDXXXX",
+      },
+    },
+    "updatePerson": {
+      firstName: "First Name",
+      lastName: "Last Name",
+      email: "Email",
+      ssn: "Social Security Number",
+      username: "Username",
+      password: "Password",
+      updateAccount: "Update Account",
+      placeholder: {
+        email: "example@email.com",
+        ssn: "YYMMDDXXXX",
+      },
+      infoText: {
+        setPasswordText: "Set new password",
+        fillGeneralInfoText: "Please fill out this information to continue",
+      },
+    },
+    apply: {
+      title: "APPLICATION",
+      expertise: "Area of expertise",
+      none: "None",
+      yearsOfExperience: "Years of experience",
+      addExpertise: "Add Expertise",
+      startDate: "Available from",
+      to: "to",
+      addPeriod: "Add Period",
+      submit: "Submit",
+    },
+  },
+  "se": {
+    "header": {
+      headerText: "Det här är en header",
+      logoutButton: "Logga ut",
+    },
+    "footer": {
+      footerText: "Det här är en footer",
+    },
+    "menu":  {
+      example: "Exempel",
+      login: "Logga In",
+      forgotPassword: "Glömt Lösenord",
+      create: "Skapa Användare",
+      apply: "Ansök",
+      applications: "Ansökningar",
+      updatePerson: "Uppdatera Person",
+    },
+    "login": {
+      username: "Användarnamn",
+      enterUsername: "Skriv Användarnamn",
+      password: "Lösenord",
+      enterPassword: "Skriv Lösenord",
+      login: "Logga in",
+      loginText: {
+        beforeLink: "Har du glömt ditt lösenord eller kan inte logga in till ett gamalt konto? Klicka ",
+        afterLink: "här",
+      },
+    },
+    "forgotPassword": {
+      description: {
+        line1: "Har du glömt ditt lösenord eller kan inte logga in till ett gamalt konto?",
+        line2: "Skriv in din email för att återställa ditt lösenord.",
+      },
+      email: "Email",
+      enterEmail: "Skriv Email",
+      resetPassword: "Återställ Lösenord",
+    },
+    "createAccount": {
+      firstName: "Förnamn",
+      lastName: "Efternamn",
+      email: "Email",
+      ssn: "Personnummer",
+      username: "Användarnamn",
+      password: "Lösenord",
+      createAccount: "Skapa Konto",
+      placeholder: {
+        email: "exempel@email.com",
+        ssn: "YYMMDDXXXX",
+      },
+    },
+    "updatePerson": {
+      firstName: "Förnamn",
+      lastName: "Efternamn",
+      email: "Email",
+      ssn: "Personnummer",
+      username: "Användarnamn",
+      password: "Lösenord",
+      updateAccount: "Uppdatera Konto",
+      placeholder: {
+        email: "exempel@email.com",
+        ssn: "YYMMDDXXXX",
+      },
+      infoText: {
+        setPasswordText: "Bestäm nytt lösenord",
+        fillGeneralInfoText: "Var god fyll i följande information för att fortsätta",
+      },
+    },
+    apply: {
+      title: "ANSÖKAN",
+      expertise: "Kunskapsområde",
+      none: "Inget",
+      yearsOfExperience: "År av erfarenhet",
+      addExpertise: "Lägg till kunskapsområde",
+      startDate: "Tillgänglig från",
+      to: "till",
+      addPeriod: "Lägg till period",
+      submit: "Ansök",
+    },
+  },
+}
