@@ -23,9 +23,9 @@ const App=()=>
           <Switch>
             <Route path="/example" component={Example}/>
             <Route path="/create" component={CreateAccount}/>
-            <Route path="/apply" component={Apply}/>
             <Route path="/applications" component={ListApplications}/>
             <Route path="/applicationdetails" component={ShowApplication}/>
+            <Route path="/apply" component={Apply}/>
             <Route path="/updateperson" component={UpdatePerson}/>
             <Redirect to="/"/>
           </Switch>

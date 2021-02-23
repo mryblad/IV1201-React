@@ -1,11 +1,17 @@
-import {createElement} from 'react';
+import {createElement,useState,useEffect} from 'react';
 import {MenuView} from './MenuView';
+import user from '../../Model/User';
+import useModelProp from '../../Model/UseModelProp';
 
 /**
  * Menu presenter
  */
 function Menu(){
-    return createElement(MenuView,{});
+    const type=useModelProp(user,"type");
+
+    return createElement(MenuView,{
+        type,
+    });
 }
 
 export {Menu};

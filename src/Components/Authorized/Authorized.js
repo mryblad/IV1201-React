@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react';
 import apiService from "../../Services/apiService";
+import user from "../../Model/User";
 
 /**
  * Authorized component used to determine if the user is logged in and should
@@ -23,15 +24,19 @@ function Authorized({value,children}){
     },[])
     useEffect(()=>{
       apiService.checkTokenValidity().then(r => {
-        if(r.success)
-          setCheckedToken(r.success)
+        if(r.success){
+          const type=r.success.body.role_id==1?"recruiter":"applicant";
+          setCheckedToken(type);
+          user.setType(type);
+        }
       }).catch(err => {
         setCheckedToken(null);
+        user.setType(null);
         console.error("Old token is invalid");
       });
     },[token])
 
-    return (checkedToken&&value)||(!checkedToken&&!value)?children:false;
+    return checkedToken&&value||!checkedToken&&!value?children:false;
 }
 
 export {Authorized};
