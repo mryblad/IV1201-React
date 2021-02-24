@@ -1,4 +1,4 @@
-const ShowApplicationView=({application,handle})=>
+const ShowApplicationView=({application,handle,goBack})=>
     <div>
         <div>Name: {application.person.name} {application.person.surname}</div>
         <br/>
@@ -15,6 +15,7 @@ const ShowApplicationView=({application,handle})=>
         <div>
             <button onClick={()=>handle("accepted")} disabled={application.application_status}>Accept</button>
             <button onClick={()=>handle("rejected")} disabled={application.application_status}>Reject</button>
+            <button onClick={goBack}>Return</button>
         </div>
     </div>
 

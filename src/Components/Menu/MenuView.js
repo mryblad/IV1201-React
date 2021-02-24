@@ -1,16 +1,20 @@
 import {Link} from 'react-router-dom';
+import {Fragment} from 'react';
 
-
-const MenuView=({translations})=>
+const MenuView=({type,translations})=>
     <div className="menu">
         <ul>
             <li><Link to="/example">{translations.example}</Link></li>
-            <li><Link to="/login">{translations.login}</Link></li>
-            <li><Link to="/forgotpassword">{translations.forgotPassword}</Link></li>
-            <li><Link to="/create">{translations.create}</Link></li>
-            <li><Link to="/apply">{translations.apply}</Link></li>
-            <li><Link to="/applications">{translations.applications}</Link></li>
-            <li><Link to="/updateperson">{translations.updatePerson}</Link></li>
+            {type==="applicant"?
+            <Fragment>
+                <li><Link to="/apply">{translations.apply}</Link></li>
+                <li><Link to="/updateperson">{translations.updatePerson}</Link></li>  
+            </Fragment>
+            :false}
+            {type==="recruiter"?
+            <Fragment>
+                <li><Link to="/applications">{translations.applications}</Link></li>
+            </Fragment>:false}
         </ul>
     </div>
 

@@ -2,7 +2,8 @@ import {createElement} from 'react';
 import {CreateAccountView} from './CreateAccountView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
-import {Translations} from './../../util/Translations'
+import {Translations} from './../../util/Translations';
+import user from '../../Model/User';
 
 /*
 *  Presenter for CreateAccountView view that
@@ -31,14 +32,31 @@ function CreateAccount(){
       Validators.passwordIsValidLength(password, "password");
       Validators.usernameIsValidLength(username, "username");
 
-      console.log(apiService.registerAccount({
+      apiService.registerAccount({
             "name": firstName,
             "surname": lastName,
             "ssn": ssn,
             "password": password,
             "email": email,
             "username": username
-        }));
+        }).then(createResponse => {
+            if(createResponse.success){
+                apiService.login({
+                    "username": username,
+                    "password": password
+                }).then(response=>{
+                    if(response.success){
+                        window.localStorage.setItem("authToken", response.success.token);
+                        window.dispatchEvent(new Event('storage'));
+                
+                        //If the user has any empty fields in database to fill out
+                        if(response.success.emptyFields){
+                            user.setEmptyFields(response.success.emptyFields);
+                        }
+                    }
+                })
+            }    
+        });
     }
 
     return createElement(CreateAccountView,{
