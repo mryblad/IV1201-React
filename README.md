@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# IV1201-React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is is a part of the course Design of Global Applications (IV1201) on KTH. The project is a recruiting application for an amusement park where applicants can make applications to work and recruiters can either accept or decline those applications. To fulfill these requirements the project is split into three parts, client side, server side and database. This is the repository for the client side of the project and will only discuss what that entails. More info about the server and database side can be found here: [other repository](https://github.com/Botan-Cosar/iv1201-server).
+
+## React
+
+This client side of the project uses React to develop the website for the users. It is programmed based on functions as opposed to classes which is also popular in React. 
 
 ## Available Scripts
 
@@ -19,52 +23,19 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Code Style and Architecture
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The client side is divided into each component, where each component has its own folder under the src/Components directory. For each component there is one presenter and one view. The presenter controlls the view and send the appropriate information to display.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Folder, Filename, Classes and highest scope Function all use PascalCase. All lower scope function and variables use camelCase. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Under the Services folder is where all the API calls are handeled, this is where all the requests to the REST server is handeled. More about the REST server can be found in the [other repository](https://github.com/Botan-Cosar/iv1201-server).
 
-### `npm run eject`
+## Translations
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+For Internationalization and Localization purposes the site can be displayed in different languages. Currently the user can click a flag to change language. Under the util directory stands the Translation.js file that stores all the translations on the client side, these then gets used by each view that needs it. In addition to this some things have to be stored in the database, this is currently only the competences which gets fetched from the service layer.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## GitHub Actions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This repository is set up with GitHub Actions to integrate a CI/CD pipeline that deploys to [this](https://console.firebase.google.com/u/2/project/iv1201-g14/overview) firebase project.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
