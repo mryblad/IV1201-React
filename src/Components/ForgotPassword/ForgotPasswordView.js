@@ -1,12 +1,12 @@
-const ForgotPasswordView=({handleSubmit})=>
+const ForgotPasswordView=({handleSubmit, translations})=>
     <div>
       <div className="forgotpassword-from">
-      <p>Have you forgot your password or cannot access an old account?<br/>
-         Enter your email to reset your password.</p>
+      <p>{translations.description.line1}<br/>
+         {translations.description.line2}</p>
         <form onSubmit={handleSubmit}>
-          <label>Email</label><br/>
-          <input type="email" name="email" placeholder="Enter Email" required maxLength="24"/>
-          <br/><button type="submit">Reset password</button>
+          <label>{translations.email}</label><br/>
+          <input type="email" name="email" placeholder={translations.enterEmail} required maxLength="24"/>
+          <br/><button type="submit">{translations.resetPassword}</button>
           <br/><br/><br/>
           </form>
       </div>

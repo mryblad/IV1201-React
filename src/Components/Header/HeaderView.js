@@ -1,7 +1,7 @@
-const HeaderView=({logOut})=>
+const HeaderView=({logOut, translations})=>
     <div className="header">
-        This is a header
-        <br/><button onClick={logOut}>Logout</button>
+        {translations.headerText}
+        <br/><button onClick={logOut}>{translations.logoutButton}</button>
     </div>
 
 export {HeaderView};

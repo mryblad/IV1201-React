@@ -18,7 +18,8 @@ function ShowApplication(props){
             })
             alert("application "+application_status);
             history.goBack();
-        }
+        },
+        goBack:()=>history.goBack()
     });
 }
 

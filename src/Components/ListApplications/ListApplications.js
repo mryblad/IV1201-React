@@ -26,7 +26,7 @@ function ListApplications(){
             filtered=applicationStart?[...filtered].filter(application=>application.createdAt>=applicationStart):filtered;
             filtered=applicationEnd?[...filtered].filter(application=>application.createdAt<=applicationEnd):filtered;
             filtered=competence!=="Any"?[...filtered].filter(application=>{
-                return application.person.competence_profiles.map(competenceProfile=>competenceProfile.competence.name_se).includes(competence);
+                return application.person.competence_profiles.map(competenceProfile=>competenceProfile.competence.competence_translations[0].translation).includes(competence);
             }):filtered;
             setApplications(filtered);
         }).catch(er=>setError(er));

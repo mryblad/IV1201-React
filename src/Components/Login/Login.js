@@ -1,27 +1,14 @@
-import {createElement, useState, useEffect} from 'react';
+import {createElement} from 'react';
 import {LoginView} from './LoginView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
-import {useHistory} from 'react-router-dom';
-
+import {Translations} from './../../util/Translations';
+import user from "../../Model/User";
 
 /**
  * Handles the Login logic and controlls the LoginView.
  */
 function Login(){
-
-  // const history=useHistory();
-  //
-  // const [emptyFields,setEmptyFields]=useState(false);
-  //
-  // useEffect(() => {
-  //   if(emptyFields){
-  //     console.log("trying to redirect");
-  //     history.push({
-  //       pathname:'updateperson',
-  //     });
-  //   }
-  // }, [emptyFields])
 
    /**
     * Handles what happens when the login form is submitted.
@@ -43,22 +30,13 @@ function Login(){
           "username": username,
           "password": password
       }).then(response => {
-        console.log(response);
         if(response.success){
           window.localStorage.setItem("authToken", response.success.token);
           window.dispatchEvent(new Event('storage'));
-          console.log("setting token...");
 
           //If the user has any empty fields in database to fill out
           if(response.success.emptyFields){
-            console.log("Empty fields:");
-            console.log(response.success.emptyFields);
-            //setEmptyFields(response.success.emptyFields);
-            alert("Should redirect to /updateperson");
-            //window.location.pathname = "/updateperson";
-            // history.push({
-            //   pathname:'updateperson',
-            // });
+            user.setEmptyFields(response.success.emptyFields);
           }
         }
       });
@@ -66,6 +44,7 @@ function Login(){
 
     return createElement(LoginView,{
         handleSubmit: e => handleSubmit(e),
+        translations: Translations[localStorage.getItem("language") || "en"].login,
     });
 }
 

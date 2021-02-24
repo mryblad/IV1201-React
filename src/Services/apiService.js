@@ -91,7 +91,7 @@ class ApiService {
 
   /**
   * handles an application
-  * 
+  *
   * @return {object} The resolved json fetch response
   */
  handleApplication(id,body){
