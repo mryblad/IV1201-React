@@ -29,6 +29,7 @@ const CreateAccountView=({handleSubmit, translations, errorMessage})=>
         <button type="submit">{translations.createAccount}</button>
       </div>
       </form>
+      <button onClick={() => window.location="/"}>{translations.homeRedirect}</button>
       <p>{errorMessage}</p>
     </div>
 

@@ -48,6 +48,7 @@ export const Translations = {
       username: "Username",
       password: "Password",
       createAccount: "Create Account",
+      homeRedirect: "Home",
       placeholder: {
         email: "example@email.com",
         ssn: "YYMMDDXXXX",
@@ -145,6 +146,7 @@ export const Translations = {
       username: "Användarnamn",
       password: "Lösenord",
       createAccount: "Skapa Konto",
+      homeRedirect: "Hem",
       placeholder: {
         email: "exempel@email.com",
         ssn: "YYMMDDXXXX",
