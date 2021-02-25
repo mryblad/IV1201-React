@@ -98,6 +98,10 @@ class ApiService {
     return this.apiCall(`application/${id}`,"PUT",body);
   }
 
+  /**
+   * gets a list of competences from the database
+   * @return {object} The resolved json fetch response
+   */
   getCompetences(){
     return this.apiCall("competence/list","GET");
   }
