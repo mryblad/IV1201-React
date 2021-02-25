@@ -1,6 +1,6 @@
 //should probably be an env variable.
-//const BASE_URL = "https://iv1201-rest-server.herokuapp.com/";
-const BASE_URL = "http://localhost:5000/"
+const BASE_URL = "https://iv1201-rest-server.herokuapp.com/";
+//const BASE_URL = "http://localhost:5000/"
 
 /**
  * Class with methods used for API calls.
@@ -78,6 +78,15 @@ class ApiService {
   */
   login(body){
     return this.apiCall("login","POST",body);
+  }
+
+  /**
+   * submits an application.
+   * @param {any} body
+   * @return {object} The resolved json fetch response 
+   */
+  submitApplication(body){
+    return this.apiCall("application","POST",body);
   }
 
   /**
