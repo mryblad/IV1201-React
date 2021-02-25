@@ -14,6 +14,7 @@ function Header(){
             window.dispatchEvent(new Event('storage'));
         },
         translations: Translations[localStorage.getItem("language") || "en"].header,
+        authToken: window.localStorage.getItem("authToken"),
     });
 }
 

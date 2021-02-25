@@ -1,7 +1,9 @@
-const HeaderView=({logOut, translations})=>
+const HeaderView=({logOut, translations, authToken})=>
     <div className="header">
         {translations.headerText}
-        <br/><button onClick={logOut}>{translations.logoutButton}</button>
+        <br/>
+        {authToken?(<button onClick={logOut}>{translations.logoutButton}</button>):null}
+
     </div>
 
 export {HeaderView};

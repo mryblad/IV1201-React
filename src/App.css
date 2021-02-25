@@ -14,22 +14,30 @@ html,body,#root,.App{
   height:100%;
 }
 
-@media (min-width:400px){
+.flexParent{
+    display:flex;
+    flex-direction: row;
+    flex:1;
+    height: calc(100% - 2*85px);
+}
+.menu{
+    width: 230px;
+}
+.mainContent{
+  height: calc(100% - 2*85px);
+  flex:1;
+}
+@media (max-width:400px){
   .flexParent{
-      display:flex;
-      flex-direction: row;
-      flex:1;
-      height:100%;
+      flex-direction: column;
   }
   .menu{
-      width: 230px;
+      width: 100%;
+      height: 85px;
   }
 }
 
-.mainContent{
-  height: 100%;
-  flex:1;
-}
+
 
 tr{
   border: 2px solid black;

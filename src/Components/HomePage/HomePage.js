@@ -6,7 +6,9 @@ import {Translations} from './../../util/Translations';
  * HomePage presenter
  */
 function HomePage(){
-    return createElement(HomePageView,{});
+    return createElement(HomePageView,{
+      translations: Translations[localStorage.getItem("language") || "en"].homePage,
+    });
 }
 
 export {HomePage};

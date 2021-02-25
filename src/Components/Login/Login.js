@@ -1,4 +1,4 @@
-import {createElement} from 'react';
+import {createElement, useState} from 'react';
 import {LoginView} from './LoginView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
@@ -10,6 +10,8 @@ import user from "../../Model/User";
  */
 function Login(){
 
+    const [errorMessage,setErrorMessage]=useState(null);
+
    /**
     * Handles what happens when the login form is submitted.
     * @param {HTML form} e The form that was submitted.
@@ -18,9 +20,6 @@ function Login(){
       e.preventDefault();
       let username = e.target.username.value
       let password = e.target.password.value
-
-      console.log("Username: " + username);
-      console.log("Password: " + password);
 
       //validate username and password
       Validators.passwordIsValidLength(password, "password");
@@ -39,12 +38,17 @@ function Login(){
             user.setEmptyFields(response.success.emptyFields);
           }
         }
+        else if(response.error){
+          const t = Translations[localStorage.getItem("language") || "en"].login;
+          setErrorMessage("Error: " + t.error);
+        }
       });
     }
 
     return createElement(LoginView,{
         handleSubmit: e => handleSubmit(e),
         translations: Translations[localStorage.getItem("language") || "en"].login,
+        errorMessage: errorMessage,
     });
 }
 
