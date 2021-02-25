@@ -1,10 +1,11 @@
 import {Link} from 'react-router-dom';
 
-const HomePageView=()=>
+const HomePageView=({translations})=>
     <div>
         <ul>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/create">Create Account</Link></li>
+            <h1>{translations.header}</h1>
+            <li><Link to="/login">{translations.login}</Link></li>
+            <li><Link to="/create">{translations.createAccount}</Link></li>
         </ul>
     </div>
 

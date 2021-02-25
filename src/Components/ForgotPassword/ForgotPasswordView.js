@@ -1,4 +1,4 @@
-const ForgotPasswordView=({handleSubmit, translations})=>
+const ForgotPasswordView=({handleSubmit, translations, errorMessage})=>
     <div>
       <div className="forgotpassword-from">
       <p>{translations.description.line1}<br/>
@@ -7,8 +7,9 @@ const ForgotPasswordView=({handleSubmit, translations})=>
           <label>{translations.email}</label><br/>
           <input type="email" name="email" placeholder={translations.enterEmail} required maxLength="24"/>
           <br/><button type="submit">{translations.resetPassword}</button>
-          <br/><br/><br/>
           </form>
+          <button onClick={() => window.location="/"}>{translations.homeRedirect}</button>
+          <p>{errorMessage}</p>
       </div>
     </div>
 

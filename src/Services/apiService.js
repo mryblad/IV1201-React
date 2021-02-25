@@ -21,7 +21,11 @@ class ApiService {
         'Authorization': "Bearer " + t
       },
       "body":body?JSON.stringify(body):null
-    }).then(response=>response.json());
+    })
+    .then(response=>response.json())
+    .catch(err => {
+      //console.error(err);
+    });
   }
 
   /**

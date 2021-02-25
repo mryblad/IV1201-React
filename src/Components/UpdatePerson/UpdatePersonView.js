@@ -1,4 +1,4 @@
-const UpdatePersonView=({ handleSubmit, handleEmpty, infoText, translations})=>
+const UpdatePersonView=({ handleSubmit, handleEmpty, infoText, translations, errorMessage})=>
     <div>
       <p>{infoText}</p>
       <form onSubmit={handleSubmit}>
@@ -30,6 +30,8 @@ const UpdatePersonView=({ handleSubmit, handleEmpty, infoText, translations})=>
           <button type="submit">{translations.updateAccount}</button>
         </div>
       </form>
+      <button onClick={() => window.location="/"}>{translations.homeRedirect}</button>
+      <p>{errorMessage}</p>
     </div>
 
 export {UpdatePersonView};

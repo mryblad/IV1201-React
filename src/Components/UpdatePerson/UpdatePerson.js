@@ -11,11 +11,13 @@ import {Translations} from './../../util/Translations'
 function UpdatePerson(){
   let token = useParams().token;
 
-  let infoTextTranslations = Translations[localStorage.getItem("language") || "en"].updatePerson.infoText;
+  let translations = Translations[localStorage.getItem("language") || "en"].updatePerson;
 
   const [missingFields,setMissingFields]=useState({});
-  const [infoText,setInfoText]=useState(infoTextTranslations.fillGeneralInfoText);
+  const [infoText,setInfoText]=useState(translations.infoText.fillGeneralInfoText);
   const [promise,setPromise]=useState(apiService.getEmptyFields(token));
+
+  const [errorMessage,setErrorMessage]=useState(null);
 
   //console.log("(Param) Token found: " + token);
 
@@ -27,7 +29,7 @@ function UpdatePerson(){
           setMissingFields(e.success.emptyFields);
         else{ //nothing is missing, means change password.
           setMissingFields({"password": true});
-          setInfoText(infoTextTranslations.setPasswordText);
+          setInfoText(translations.infoText.setPasswordText);
         }
       }
     }).catch(console.error);
@@ -68,7 +70,11 @@ function UpdatePerson(){
         body.password = e.target.password.value;
 
       apiService.updatePerson({body, token}).then(response => {
-        console.log(response);
+        if(response.success)
+          setInfoText(translations.infoText.success);
+        else if(response.error)
+          setErrorMessage("Error: " + translations.error);
+          console.error(response.error);
       });
     }
 
@@ -77,6 +83,7 @@ function UpdatePerson(){
         handleEmpty: e => handleEmpty(e),
         infoText: infoText,
         translations: Translations[localStorage.getItem("language") || "en"].updatePerson,
+        errorMessage: errorMessage,
     });
 }
 

@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-const LoginView=({handleSubmit, translations})=>
+const LoginView=({handleSubmit, translations, errorMessage})=>
     <div>
       <div className="login-from">
         <form onSubmit={handleSubmit}>
@@ -9,6 +9,7 @@ const LoginView=({handleSubmit, translations})=>
           <input type="password" name="password" placeholder={translations.enterPassword} required maxLength="24"/>
           <br/><button type="submit">{translations.login}</button>
         </form>
+        <p>{errorMessage}</p>
       </div>
       <p>{translations.loginText.beforeLink}<Link to="/forgotPassword">{translations.loginText.afterLink}</Link></p>
     </div>

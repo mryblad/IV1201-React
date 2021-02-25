@@ -1,4 +1,4 @@
-const CreateAccountView=({handleSubmit, translations})=>
+const CreateAccountView=({handleSubmit, translations, errorMessage})=>
     <div>
       <form onSubmit={handleSubmit}>
       <div className="create-form">
@@ -29,6 +29,7 @@ const CreateAccountView=({handleSubmit, translations})=>
         <button type="submit">{translations.createAccount}</button>
       </div>
       </form>
+      <p>{errorMessage}</p>
     </div>
 
 export {CreateAccountView};

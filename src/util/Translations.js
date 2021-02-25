@@ -2,7 +2,7 @@
 export const Translations = {
   "en": {
     "header": {
-      headerText: "This is a header",
+      headerText: "IV1201 Group 14 Recruiting Application",
       logoutButton: "Logout",
     },
     "footer": {
@@ -27,6 +27,7 @@ export const Translations = {
         beforeLink: "Have you forgot your password or can't login to an old account? Click ",
         afterLink: "here",
       },
+      error: "Invalid username or password."
     },
     "forgotPassword": {
       description: {
@@ -36,6 +37,8 @@ export const Translations = {
       email: "Email",
       enterEmail: "Enter Email",
       resetPassword: "Reset Password",
+      homeRedirect: "Home",
+      error: "There is no account connected to this email address",
     },
     "createAccount": {
       firstName: "First Name",
@@ -49,6 +52,13 @@ export const Translations = {
         email: "example@email.com",
         ssn: "YYMMDDXXXX",
       },
+      error: {
+        autoLogin: "Failed to login to new account, try to log in manually.",
+        createAccount: {
+          username: "Failed to create account. Username already taken",
+          email: "Failed to create account. Email already in use",
+        },
+      },
     },
     "updatePerson": {
       firstName: "First Name",
@@ -58,6 +68,7 @@ export const Translations = {
       username: "Username",
       password: "Password",
       updateAccount: "Update Account",
+      homeRedirect: "Home",
       placeholder: {
         email: "example@email.com",
         ssn: "YYMMDDXXXX",
@@ -65,9 +76,11 @@ export const Translations = {
       infoText: {
         setPasswordText: "Set new password",
         fillGeneralInfoText: "Please fill out this information to continue",
+        success: "Changes saved successfully!"
       },
+      error: "Failed to save changes, try again in a moment.",
     },
-    apply: {
+    "apply": {
       title: "APPLICATION",
       expertise: "Area of expertise",
       none: "None",
@@ -78,10 +91,15 @@ export const Translations = {
       addPeriod: "Add Period",
       submit: "Submit",
     },
+    "homePage": {
+      header: "IV1201 Group 14 Recruiting Application",
+      login: "Login",
+      createAccount: "Create Account",
+    },
   },
   "se": {
     "header": {
-      headerText: "Det här är en header",
+      headerText: "IV1201 Grupp 14 Rekryteringsapplikation",
       logoutButton: "Logga ut",
     },
     "footer": {
@@ -106,6 +124,7 @@ export const Translations = {
         beforeLink: "Har du glömt ditt lösenord eller kan inte logga in till ett gamalt konto? Klicka ",
         afterLink: "här",
       },
+      error: "Fel användarnamn eller lösenord"
     },
     "forgotPassword": {
       description: {
@@ -115,6 +134,8 @@ export const Translations = {
       email: "Email",
       enterEmail: "Skriv Email",
       resetPassword: "Återställ Lösenord",
+      homeRedirect: "Hem",
+      error: "Det finns inget konto kopplat till emailadressen",
     },
     "createAccount": {
       firstName: "Förnamn",
@@ -128,6 +149,13 @@ export const Translations = {
         email: "exempel@email.com",
         ssn: "YYMMDDXXXX",
       },
+      error: {
+        autoLogin: "Inloggning till nytt konto misslyckades, försök igen manuellt.",
+        createAccount: {
+          username: "Kunde inte skapa konto, användarnamnet är upptaget.",
+          email: "Kunde inte skapa konto, emailadressen är kopplat till ett annat konto",
+        },
+      },
     },
     "updatePerson": {
       firstName: "Förnamn",
@@ -137,6 +165,7 @@ export const Translations = {
       username: "Användarnamn",
       password: "Lösenord",
       updateAccount: "Uppdatera Konto",
+      homeRedirect: "Hem",
       placeholder: {
         email: "exempel@email.com",
         ssn: "YYMMDDXXXX",
@@ -144,9 +173,11 @@ export const Translations = {
       infoText: {
         setPasswordText: "Bestäm nytt lösenord",
         fillGeneralInfoText: "Var god fyll i följande information för att fortsätta",
+        success: "Ändringarna har sparats!"
       },
+      error: "Ändringen misslyckades, försök igen senare",
     },
-    apply: {
+    "apply": {
       title: "ANSÖKAN",
       expertise: "Kunskapsområde",
       none: "Inget",
@@ -156,6 +187,11 @@ export const Translations = {
       to: "till",
       addPeriod: "Lägg till period",
       submit: "Ansök",
+    },
+    "homePage": {
+      header: "IV1201 Grupp 14 Rekryteringsapplikation",
+      login: "Logga in",
+      createAccount: "Skapa Konto",
     },
   },
 }

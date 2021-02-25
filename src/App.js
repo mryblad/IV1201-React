@@ -43,6 +43,8 @@ const App=()=>
       <Footer/>
     </Authorized>
     <Authorized value={false}>
+      <Header/>
+      <div className="mainContent">
       <Switch>
         <Route exact path="/" component={HomePage}/>
         <Route path="/login" component={Login}/>
@@ -51,6 +53,8 @@ const App=()=>
         <Route path="/updateperson/:token" component={UpdatePerson}/>
         <Redirect to="/"/>
       </Switch>
+      </div>
+      <Footer/>
     </Authorized>
   </div>;
 
