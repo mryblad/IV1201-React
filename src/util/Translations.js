@@ -23,6 +23,7 @@ export const Translations = {
       password: "Password",
       enterPassword: "Enter Password",
       login: "Login",
+      homeRedirect: "Home",
       loginText: {
         beforeLink: "Have you forgot your password or can't login to an old account? Click ",
         afterLink: "here",
@@ -121,6 +122,7 @@ export const Translations = {
       password: "Lösenord",
       enterPassword: "Skriv Lösenord",
       login: "Logga in",
+      homeRedirect: "Hem",
       loginText: {
         beforeLink: "Har du glömt ditt lösenord eller kan inte logga in till ett gamalt konto? Klicka ",
         afterLink: "här",

@@ -9,6 +9,7 @@ const LoginView=({handleSubmit, translations, errorMessage})=>
           <input type="password" name="password" placeholder={translations.enterPassword} required maxLength="24"/>
           <br/><button type="submit">{translations.login}</button>
         </form>
+        <button onClick={() => window.location="/"}>{translations.homeRedirect}</button>
         <p>{errorMessage}</p>
       </div>
       <p>{translations.loginText.beforeLink}<Link to="/forgotPassword">{translations.loginText.afterLink}</Link></p>
