@@ -1,40 +1,39 @@
-const ListApplicationsSearchView=({getApplications})=>
+const ListApplicationsSearchView=({competences,getApplications,translations})=>
     <div>
         <form onSubmit={e=>getApplications(e)}>
             <div>
-                <label htmlFor="name">Applicant First Name</label>
+                <label htmlFor="name">{translations.firstName}</label>
                 <input type="text" id="name"/>
             </div>
             <div>
-                <label htmlFor="surname">Applicant Last Name</label>
+                <label htmlFor="surname">{translations.lastName}</label>
                 <input type="text" id="surname"/>
             </div>
             <div>
-                <label htmlFor="start">Available Earliest</label>
+                <label htmlFor="start">{translations.availableStart}</label>
                 <input type="date" id="start"/>
             </div>
             <div>
-                <label htmlFor="end">Available Latest</label>
+                <label htmlFor="end">{translations.availableEnd}</label>
                 <input type="date" id="end"/>
             </div>
             <div>
-                <label htmlFor="applicationstart">Applied Earliest</label>
+                <label htmlFor="applicationstart">{translations.applicationStart}</label>
                 <input type="date" id="applicationstart"/>
             </div>
             <div>
-                <label htmlFor="applicationend">Applied Latest</label>
+                <label htmlFor="applicationend">{translations.applicationEnd}</label>
                 <input type="date" id="applicationend"/> 
             </div>
             <div>
-                <label htmlFor="competence">Competence</label>
+                <label htmlFor="competence">{translations.competence}</label>
                 <select id="competence">
-                    <option value="Any">Any</option>
-                    {["Korvgrillning", "Karuselldrift"]
-                    .map(k=><option key={k}>{k}</option>)}
+                    <option value={translations.any}>{translations.any}</option>
+                    {competences}
                 </select>
             </div>
             <div>
-               <button type="submit">Search</button> 
+               <button type="submit">{translations.search}</button> 
             </div>
         </form>
     </div>
