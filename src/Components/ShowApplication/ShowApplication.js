@@ -14,7 +14,8 @@ function ShowApplication(props){
         application:props.location.application,
         handle:application_status=>{
             apiService.handleApplication(props.location.application.availability_id,{
-                application_status
+                application_status,
+                version_number:props.location.application.version_number
             })
             alert("application "+application_status);
             history.goBack();
