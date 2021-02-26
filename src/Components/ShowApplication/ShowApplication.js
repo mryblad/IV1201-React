@@ -1,6 +1,7 @@
-import {createElement} from 'react';
+import {createElement,useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {ShowApplicationView} from './ShowApplicationView';
+import {Translations} from './../../util/Translations'
 import apiService from '../../Services/apiService';
 
 /**
@@ -8,6 +9,8 @@ import apiService from '../../Services/apiService';
  */
 function ShowApplication(props){
 
+    const [language,setLanguage]=useState(localStorage.getItem("language") || "en");
+    const [translations,setTranslations]=useState(Translations[language].showApplication);
     const history=useHistory();
 
     return createElement(ShowApplicationView,{
@@ -17,10 +20,13 @@ function ShowApplication(props){
                 application_status,
                 version_number:props.location.application.version_number
             })
-            alert("application "+application_status);
+            .then(res=>alert(translations.msg))
+            .catch(err=>alert(translations.errMsg));
             history.goBack();
         },
-        goBack:()=>history.goBack()
+        goBack:()=>history.goBack(),
+        language,
+        translations
     });
 }
 

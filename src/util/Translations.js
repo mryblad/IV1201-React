@@ -98,6 +98,37 @@ export const Translations = {
       login: "Login",
       createAccount: "Create Account",
     },
+    "listApplications":{
+      firstName: "Applicant First Name",
+      lastName: "Applicant Last Name",
+      availableStart: "Available Earliest",
+      availableEnd: "Available Latest",
+      applicationStart: "Applied Earliest",
+      applicationEnd: "Applied Latest",
+      competence: "Competence",
+      any: "Any",
+      search: "Search",
+      error: "Could not get applications",
+      name: "Name",
+      applicationDate: "Application Date"
+    },
+    "showApplication":{
+      name: "Name: ",
+      competences: "Competences: ",
+      type: "Type: ",
+      years_of_experience: " Years of Experience: ",
+      availableStart: "Can work from: ",
+      availableEnd: " to: ",
+      applicationDate: "Application submitted on: ",
+      missingDate: "No submission date",
+      unhandled: "Unhandled",
+      application_status: "Status: ",
+      msg: "Updated application status",
+      errMsg: "Could not update application status",
+      accept: "Accept",
+      reject: "Reject",
+      return: "Return"
+    }
   },
   "se": {
     "header": {
@@ -197,5 +228,36 @@ export const Translations = {
       login: "Logga in",
       createAccount: "Skapa Konto",
     },
+    "listApplications":{
+      firstName: "Sökandens Förnamn",
+      lastName: "Sökandens Efternamn",
+      availableStart: "Tillgänglig från och med",
+      availableEnd: "Tillgänglig fram tills",
+      applicationStart: "Sökte tidigast",
+      applicationEnd: "Sökte senast",
+      competence: "Kompetens",
+      any: "Alla",
+      search: "Sök",
+      error: "Kunde inte hämta ansökningar",
+      name: "Namn",
+      applicationDate: "Ansökans datum"
+    },
+    "showApplication":{
+      name: "Namn: ",
+      competences: "Kompetenser: ",
+      type: "Typ: ",
+      years_of_experience: " År av erfarenhet: ",
+      availableStart: "Tillgänglig från och med: ",
+      availableEnd: " tills: ",
+      applicationDate: "Ansökte den: ",
+      missingDate: "Ansökningsdatum saknas",
+      unhandled: "Ej hanterat",
+      application_status: "Status: ",
+      msg: "Updaterade ansökans status",
+      errMsg: "Kunde ej uppdatera ansökans status",
+      accept: "Acceptera",
+      reject: "Avböj",
+      return: "Tillbaka"
+    }
   },
 }

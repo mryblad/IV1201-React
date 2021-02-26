@@ -1,13 +1,13 @@
-const ListApplicationsResultsView=({applications,error,handleRowClick})=>
+const ListApplicationsResultsView=({applications,error,handleRowClick,translations})=>
     <div>
         {error?<div>
-            Could not get applications
+            {translations.error}
         </div>:
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Application Date</th>
+                    <th>{translations.name}</th>
+                    <th>{translations.applicationDate}</th>
                 </tr>
             </thead>
             <tbody>

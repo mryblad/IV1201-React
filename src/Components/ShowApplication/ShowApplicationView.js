@@ -1,21 +1,23 @@
-const ShowApplicationView=({application,handle,goBack})=>
+const ShowApplicationView=({application,handle,goBack,language,translations})=>
     <div>
-        <div>Name: {application.person.name} {application.person.surname}</div>
+        <div>{translations.name} {application.person.name} {application.person.surname}</div>
         <br/>
-        <div>Competences:</div>
+        <div>{translations.competences}</div>
         {application.person.competence_profiles.map((competenceProfile,i)=>
         <div key={i}>
-            <span>Type: {competenceProfile.competence.competence_translations[0].translation} Years of Experience: {competenceProfile.years_of_experience}</span>
+            <span>
+                {translations.type} {competenceProfile.competence.competence_translations.map(l =>l.language == language ?l.translation:null)} {translations.years_of_experience} {competenceProfile.years_of_experience}
+            </span>
         </div>)}
         <br/>
-        <div>Can work from: {application.from_date} to: {application.to_date}</div>
+        <div>{translations.availableStart} {application.from_date} {translations.availableEnd} {application.to_date}</div>
         <br/>
-        <div>Application submitted on: {application.createdAt?application.createdAt:"No submission date"}</div>
-        <div>Status: {application.application_status?application.application_status:"Unhandled"}</div>
+        <div>{translations.applicationDate} {application.createdAt?application.createdAt:translations.missingDate}</div>
+        <div>{translations.application_status} {application.application_status?application.application_status:translations.unhandled}</div>
         <div>
-            <button onClick={()=>handle("accepted")}>Accept</button>
-            <button onClick={()=>handle("rejected")}>Reject</button>
-            <button onClick={goBack}>Return</button>
+            <button onClick={()=>handle("accepted")}>{translations.accept}</button>
+            <button onClick={()=>handle("rejected")}>{translations.reject}</button>
+            <button onClick={goBack}>{translations.return}</button>
         </div>
     </div>
 
