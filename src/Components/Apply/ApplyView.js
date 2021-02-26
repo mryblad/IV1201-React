@@ -1,4 +1,4 @@
-const ApplyView=({selectedCompetences,setSelectedCompetences,selectedPeriods,setSelectedPeriods,handleSubmit, translations, lang, options})=>
+const ApplyView=({selectedCompetences,setSelectedCompetences,selectedPeriods,setSelectedPeriods,handleSubmit, translations, lang, options, startDate, setStartDate})=>
   <div>
     <h1>{translations.title}</h1>
     {selectedCompetences.map((entry,i)=>
@@ -15,7 +15,7 @@ const ApplyView=({selectedCompetences,setSelectedCompetences,selectedPeriods,set
         <option value="none">{translations.none}</option>
         {options}
       </select>
-      <input type="number" name="experience" placeholder={translations.yearsOfExperience} size="4" required/>
+      <input type="number" name="experience" placeholder={translations.yearsOfExperience} size="4" min="0" required/>
       <br/>
       <button type="submit">{translations.addExpertise}</button>
     </form>
@@ -29,9 +29,9 @@ const ApplyView=({selectedCompetences,setSelectedCompetences,selectedPeriods,set
     </div>)}
     <form onSubmit={e=>setSelectedPeriods(e)}>
       <label htmlFor="startDate">{translations.startDate}:</label>
-      <input type="date" id="startDate" name="startDate"></input>
+      <input type="date" id="startDate" name="startDate" min={new Date().toISOString().split("T")[0]} onChange={e => {setStartDate(e.target.value); console.log(e.target.value)}}></input>
       <label htmlFor="endDate">{translations.to}:</label>
-      <input type="date" id="endDate" name="endDate"></input><br/>
+      <input type="date" id="endDate" name="endDate" min={startDate}></input><br/>
       <button type="submit">{translations.addPeriod}</button><br/>
     </form>
     <button onClick={handleSubmit}>{translations.submit}</button>

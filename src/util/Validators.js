@@ -18,6 +18,22 @@ class Validators{
     assert.equal(typeof str, 'string', varName + " must be a string.");
   }
 
+  /**
+   * Checks if the value is a number (can be either a typeof string or number)
+   * @param {any} value The value to check
+   * @param {string} varName The name of the variable that holds the value
+   * @throws {AssertionError} If validation fails.
+   */
+  static isNumber(value, varName) {
+    assert.equal(true, !isNaN(parseInt(value)) && parseInt(value).toString().length == value.toString().length, `${varName} needs to be a number.`);
+  }
+
+
+  static numberIsGreaterThanZero(value, varName) {
+    this.isNumber(value, varName);
+    assert.equal(value > 0, true, varName + " needs to be greater than zero");
+  }
+
  /**
   * checks if the value is null or undefined
   * @param {any} obj The value to check
@@ -72,6 +88,37 @@ class Validators{
   static isEmailValid(emailInput) {
     let emailForm = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     assert(emailForm.test(emailInput));
+  }
+
+  /**
+   * Checks if date has past today's date
+   * @param  {string} date The date the check
+   * @param  {string} varName The name of the variable
+   * @throws {AssertionError} If validation fails.
+   */
+  static isNotPastDate(date, varName){
+    //gets 00:00:00 of current day
+    let now = new Date();
+    now.setHours(0);
+    now.setMinutes(0);
+    now.setSeconds(0);
+    let d = new Date(date);
+    assert.equal(d.getTime() > now.getTime(), true, "(" + varName + ") Date has already passed.");
+  }
+
+  /**
+   * Checks if a second date is before a first date.
+   * @param  {string} firstDate The first date
+   * @param  {string} secondDate The second date
+   * @param  {string} varName1 The name of the variable
+   * @param  {string} varName2 The name of the variable
+   * @throws {AssertionError} If validation fails.
+   */
+  static dateIsNotPastDate(firstDate, secondDate, varName1, varName2){
+    //gets 00:00:00 of current day
+    let f = new Date(firstDate);
+    let s = new Date(secondDate);
+    assert.equal(f.getTime() <= s.getTime(), true, "Second date (" + varName2 + ") cannot be before first date (" + varName1 + ")");
   }
 }
 

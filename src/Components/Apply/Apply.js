@@ -14,6 +14,9 @@ function Apply(){
   const [promise,setPromise]=useState(apiService.getCompetences());
   const [selectedCompetences,setSelectedCompetences]=useState([]);
   const [selectedPeriods,setSelectedPeriods]=useState([]);
+  const [startDate, setStartDate]=useState(new Date().toISOString().split("T")[0]);
+
+
 
   useEffect(() => {
     promise&&promise.then(data => {
@@ -35,26 +38,46 @@ function Apply(){
     selectedCompetences,
     setSelectedCompetences:e=>{
       e.preventDefault();
+      Validators.isNumber(e.target.experience.value, "e.target.experience.value");
+      console.log(e.target.expertise.value);
       setSelectedCompetences([...selectedCompetences,{
-        competence_id:competencesRaw.find(c=>c.competence_translations.map(t=>t.translation).includes(e.target.expertise.value)).competence_id,
+        competence_id: e.target.expertise.value,
         years_of_experience:e.target.experience.value
       }])
     },
     selectedPeriods,
     setSelectedPeriods:e=>{
       e.preventDefault();
+      let startDate = e.target.startDate.value;
+      let endDate = e.target.endDate.value;
+      Validators.isNotPastDate(startDate, "startDate");
+      Validators.isNotPastDate(endDate, "endDate");
+      Validators.dateIsNotPastDate(startDate, endDate, "startDate", "endDate");
       setSelectedPeriods([...selectedPeriods,{
-        from_date:e.target.startDate.value,
-        to_date:e.target.endDate.value
+        from_date:startDate,
+        to_date:endDate
       }])
     },
-    handleSubmit: () => apiService.submitApplication({
-      competencies:selectedCompetences,
-      periods:selectedPeriods
-    }).then(dt=>alert("Application submitted!")),
+    handleSubmit: () => {
+      //change name to id
+      selectedCompetences
+      .map(s => s.competence_id = competencesRaw
+        .find(c=>c.competence_translations
+          .map(t=>t.translation)
+          .includes(s.competence_id)).competence_id)
+      console.log(selectedCompetences);
+
+      //api call
+      apiService.submitApplication({
+        competencies:selectedCompetences,
+        periods:selectedPeriods
+      }).then(dt=>alert("Application submitted!"))
+    },
     translations: Translations[localStorage.getItem("language") || "en"].apply,
     lang: Translations[localStorage.getItem("language") || "en"],
     options: competences,
+    startDate: startDate,
+    setStartDate: setStartDate,
   });
 }
 
