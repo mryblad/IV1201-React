@@ -16,7 +16,16 @@ function Apply(){
   const [selectedPeriods,setSelectedPeriods]=useState([]);
   const [startDate, setStartDate]=useState(new Date().toISOString().split("T")[0]);
 
-
+  const [unsavedValues,setUnsavedValues]=useState({
+    competencies: {
+      competence_id: null,
+      years_of_experience: null,
+    },
+    periods:{
+      from_date: null,
+      to_date: null,
+    },
+  });
 
   useEffect(() => {
     promise&&promise.then(data => {
@@ -58,10 +67,36 @@ function Apply(){
         to_date:endDate
       }])
     },
-    handleSubmit: () => {
+    onChange: (e) => {
+      switch(e.target.name){
+        case "selectExpertice":
+          unsavedValues.competencies.competence_id = e.target.value;
+          break;
+        case "experience":
+          unsavedValues.competencies.years_of_experience = e.target.value;
+          break;
+        case "startDate":
+          unsavedValues.periods.from_date = e.target.value;
+          break;
+        case "endDate":
+          unsavedValues.periods.to_date = e.target.value;
+          break;
+        default:
+          console.log("Unexpected change: " + e.target.name);
+          return;
+      }
+      setUnsavedValues(unsavedValues);
+      //console.log(unsavedValues);
+    },
+    handleSubmit: (e) => {
       //change name to id
-      selectedCompetences
-      .map(s => s.competence_id = competencesRaw
+      selectedCompetences.push(unsavedValues.competencies);
+      selectedPeriods.push(unsavedValues.periods);
+
+      console.log(selectedCompetences);
+      selectedCompetences && selectedCompetences
+      .map(s => s.competence_id = s.competence_id == "none" ? null :
+         competencesRaw
         .find(c=>c.competence_translations
           .map(t=>t.translation)
           .includes(s.competence_id)).competence_id)
