@@ -13,8 +13,8 @@ const ShowApplicationView=({application,handle,goBack})=>
         <div>Application submitted on: {application.createdAt?application.createdAt:"No submission date"}</div>
         <div>Status: {application.application_status?application.application_status:"Unhandled"}</div>
         <div>
-            <button onClick={()=>handle("accepted")} disabled={application.application_status}>Accept</button>
-            <button onClick={()=>handle("rejected")} disabled={application.application_status}>Reject</button>
+            <button onClick={()=>handle("accepted")}>Accept</button>
+            <button onClick={()=>handle("rejected")}>Reject</button>
             <button onClick={goBack}>Return</button>
         </div>
     </div>
