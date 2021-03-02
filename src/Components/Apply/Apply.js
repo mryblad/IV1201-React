@@ -93,18 +93,21 @@ function Apply(){
       selectedCompetences.push(unsavedValues.competencies);
       selectedPeriods.push(unsavedValues.periods);
 
-      console.log(selectedCompetences);
+      let filteredCompetences = [];
       selectedCompetences && selectedCompetences
-      .map(s => s.competence_id = s.competence_id == "none" ? null :
-         competencesRaw
-        .find(c=>c.competence_translations
-          .map(t=>t.translation)
-          .includes(s.competence_id)).competence_id)
-      console.log(selectedCompetences);
+      .map(s => s.competence_id == "none" || s.competence_id == null ? null : filteredCompetences
+        .push({competence_id: competencesRaw
+          .find(c=>c.competence_translations
+            .map(t=>t.translation)
+            .includes(s.competence_id)).competence_id, years_of_experience: s.years_of_experience}));
 
       //api call
+
+
+
+
       apiService.submitApplication({
-        competencies:selectedCompetences,
+        competencies:filteredCompetences,
         periods:selectedPeriods
       }).then(dt=>alert("Application submitted!"))
     },
