@@ -8,6 +8,10 @@ const STRING_LIMIT = 20;
  * Class with validation methods used to validate data.
  */
 class Validators{
+  static test(str){
+    return str;
+  }
+
  /**
   * checks if the value is a string
   * @param {any} str The value to check
@@ -15,7 +19,7 @@ class Validators{
   * @throws {AssertionError} If validation fails.
   */
   static isString(str, varName){
-    assert.equal(typeof str, 'string', varName + " must be a string.");
+    assert.equal(typeof str == 'string', true, varName + " must be a string.");
   }
 
   /**
@@ -25,7 +29,7 @@ class Validators{
    * @throws {AssertionError} If validation fails.
    */
   static isNumber(value, varName) {
-    assert.equal(true, !isNaN(parseInt(value)) && parseInt(value).toString().length == value.toString().length, `${varName} needs to be a number.`);
+    assert.equal(!isNaN(parseInt(value)) && parseInt(value).toString().length == value.toString().length, true, `${varName} needs to be a number.`);
   }
 
 
@@ -40,8 +44,18 @@ class Validators{
   * @param {string} varName The name of the variable
   * @throws {AssertionError} If validation fails.
   */
-  static isEmpty(obj, varName){
-    assert.equal(obj === null || obj === undefined, false, varName + " must not be null or undefined.")
+  static isNotEmpty(obj, varName){
+    assert.equal(
+      !(obj === null ||
+      obj === undefined ||
+      (obj.constructor === Array && !obj[0]) ||
+      (obj.constructor === Object && Object.keys(obj).length === 0))
+      , true, varName + " must not be null, undefined or an empty object/list")
+
+    // assert.equal(obj !== null, true, varName + " must not be null")
+    // assert.equal(obj !== undefined, true, varName + " must not be undefined")
+    // assert.equal(!Array.isArray(obj) && !obj[0], true, varName + " must not be null an empty object")
+    //assert.equal(typeof(obj) == "object" && Object.keys(obj).length > 0, true, varName + " must not be an empty list")
   }
 
  /**
@@ -86,7 +100,7 @@ class Validators{
    * @throws {AssertionError} If validation fails.
    */
   static isEmailValid(emailInput) {
-    let emailForm = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    let emailForm = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.+([a-zA-Z0-9-]+)+$/;
     assert(emailForm.test(emailInput));
   }
 
@@ -103,7 +117,7 @@ class Validators{
     now.setMinutes(0);
     now.setSeconds(0);
     let d = new Date(date);
-    assert.equal(d.getTime() > now.getTime(), true, "(" + varName + ") Date has already passed.");
+    assert.equal(d.getTime() > now.getTime() && (date !== null), true, "(" + varName + ") Date has already passed.");
   }
 
   /**
@@ -118,7 +132,7 @@ class Validators{
     //gets 00:00:00 of current day
     let f = new Date(firstDate);
     let s = new Date(secondDate);
-    assert.equal(f.getTime() <= s.getTime(), true, "Second date (" + varName2 + ") cannot be before first date (" + varName1 + ")");
+    assert.equal(f.getTime() <= s.getTime() && (firstDate !== null || secondDate !== null), true, "Second date (" + varName2 + ") cannot be before first date (" + varName1 + ")");
   }
 }
 

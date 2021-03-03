@@ -86,7 +86,6 @@ function Apply(){
           return;
       }
       setUnsavedValues(unsavedValues);
-      //console.log(unsavedValues);
     },
     handleSubmit: (e) => {
       //change name to id
@@ -102,10 +101,6 @@ function Apply(){
             .includes(s.competence_id)).competence_id, years_of_experience: s.years_of_experience}));
 
       //api call
-
-
-
-
       apiService.submitApplication({
         competencies:filteredCompetences,
         periods:selectedPeriods

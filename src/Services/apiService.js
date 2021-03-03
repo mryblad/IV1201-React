@@ -87,7 +87,7 @@ class ApiService {
   /**
    * submits an application.
    * @param {any} body
-   * @return {object} The resolved json fetch response 
+   * @return {object} The resolved json fetch response
    */
   submitApplication(body){
     return this.apiCall("application","POST",body);

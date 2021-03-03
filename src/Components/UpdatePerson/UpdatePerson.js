@@ -72,9 +72,10 @@ function UpdatePerson(){
       apiService.updatePerson({body, token}).then(response => {
         if(response.success)
           setInfoText(translations.infoText.success);
-        else if(response.error)
+        else if(response.error){
           setErrorMessage("Error: " + translations.error);
           console.error(response.error);
+        }
       });
     }
 
