@@ -1,4 +1,4 @@
-/*import apiService from "../Services/apiService";
+/*const ApiService = require('../Services/apiService');
 
 describe('test for registerAccount', () => {
   test('if data is valid', () => {
