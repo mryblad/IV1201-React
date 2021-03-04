@@ -19,7 +19,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**"
+    "lint": "eslint --ignore-pattern '*.png' --ignore-pattern '*.css' --ignore-pattern '*.svg' --global require,exports,it,expect,jest,describe:true --ext .jsx --ext .js src/**"
   },
   "eslintConfig": {
     "extends": [
