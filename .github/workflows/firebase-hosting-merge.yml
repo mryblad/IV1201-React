@@ -11,7 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci && CI='' && npm run test && npm run build
+      - name: Install ci
+        run: npm ci && CI=''
+      - name: Run ESLint
+        run: eslint . --ext .js,.jsx,.ts,.tsx
+      - name: Run tests
+        run: npm run test
+      - name: Build application
+        run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
