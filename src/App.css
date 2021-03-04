@@ -7,6 +7,9 @@ html,body,#root,.App{
   background-color: #333;
   color: white;
 }
+.header p{
+  margin: 0px;
+}
 
 .menu{
   background-color: #337733;
