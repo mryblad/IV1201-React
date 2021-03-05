@@ -1,3 +1,5 @@
+import React from 'react';
+
 const CreateAccountView=({handleSubmit, translations, errorMessage})=>
     <div>
       <form onSubmit={handleSubmit}>
