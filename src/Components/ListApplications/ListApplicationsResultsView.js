@@ -1,3 +1,4 @@
+import React from 'react';
 const ListApplicationsResultsView=({applications,error,handleRowClick,translations})=>
     <div>
         {error?<div>

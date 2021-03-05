@@ -1,5 +1,5 @@
+import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
-import {Fragment} from 'react';
 
 const MenuView=({type,translations})=>
     <div className="menu">
@@ -8,7 +8,7 @@ const MenuView=({type,translations})=>
             {type==="applicant"?
             <Fragment>
                 <li><Link to="/apply">{translations.apply}</Link></li>
-                <li><Link to="/updateperson">{translations.updatePerson}</Link></li>  
+                <li><Link to="/updateperson">{translations.updatePerson}</Link></li>
             </Fragment>
             :false}
             {type==="recruiter"?

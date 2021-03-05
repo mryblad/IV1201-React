@@ -1,3 +1,4 @@
+import React from 'react';
 const ForgotPasswordView=({handleSubmit, translations, errorMessage})=>
     <div>
       <div className="forgotpassword-from">

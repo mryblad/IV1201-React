@@ -1,3 +1,4 @@
+import React from 'react';
 const ListApplicationsSearchView=({competences,getApplications,translations})=>
     <div>
         <form onSubmit={e=>getApplications(e)}>
@@ -23,7 +24,7 @@ const ListApplicationsSearchView=({competences,getApplications,translations})=>
             </div>
             <div>
                 <label htmlFor="applicationend">{translations.applicationEnd}</label>
-                <input type="date" id="applicationend"/> 
+                <input type="date" id="applicationend"/>
             </div>
             <div>
                 <label htmlFor="competence">{translations.competence}</label>
@@ -33,7 +34,7 @@ const ListApplicationsSearchView=({competences,getApplications,translations})=>
                 </select>
             </div>
             <div>
-               <button type="submit">{translations.search}</button> 
+               <button type="submit">{translations.search}</button>
             </div>
         </form>
     </div>
