@@ -1,6 +1,7 @@
+import React from 'react';
 const HeaderView=({logOut, translations, authToken})=>
     <div className="header">
-        {translations.headerText}
+        <p>{translations.headerText}</p>
         <br/>
         {authToken?(<button onClick={logOut}>{translations.logoutButton}</button>):null}
 

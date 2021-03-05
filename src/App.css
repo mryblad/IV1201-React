@@ -1,4 +1,4 @@
-html,body,#root,.App{
+html, body, #root, .App{
   height:100%;
 }
 
@@ -6,6 +6,9 @@ html,body,#root,.App{
   height:85px;
   background-color: #333;
   color: white;
+}
+.header p{
+  margin: 0px;
 }
 
 .menu{

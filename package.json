@@ -6,7 +6,6 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "enzyme": "^3.11.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -21,7 +20,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**"
+    "lint": "eslint --ignore-pattern '*.png' --ignore-pattern '*.css' --ignore-pattern '*.svg' --global require,exports,it,expect,jest,describe:true --ext .jsx --ext .js src/**"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +42,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.16",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "eslint": "^7.20.0",
     "eslint-plugin-react": "^7.22.0"
   }

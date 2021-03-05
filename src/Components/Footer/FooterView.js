@@ -1,8 +1,8 @@
-const FooterView=({translations, flags, setLanguage})=>
+const FooterView=({translations, setLanguage})=>
     <div className="footer">
         {/*translations.footerText*/}
-        <img src={flags.se.default} onClick={() => setLanguage("se")} alt="se flag"/>
-        <img src={flags.en.default} onClick={() => setLanguage("en")} alt="en flag"/>
+        <img src="se_icon.png" onClick={() => setLanguage("se")} alt="se flag"/>
+        <img src="en_icon.png" onClick={() => setLanguage("en")} alt="en flag"/>
     </div>
 
 export {FooterView};
