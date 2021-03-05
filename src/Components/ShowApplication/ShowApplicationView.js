@@ -1,3 +1,4 @@
+import React from 'react';
 const ShowApplicationView=({application,handle,goBack,language,translations})=>
     <div>
         <div>{translations.name} {application.person.name} {application.person.surname}</div>

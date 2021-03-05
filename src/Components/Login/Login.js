@@ -22,8 +22,8 @@ function Login(){
       let password = e.target.password.value
 
       //validate username and password
-      Validators.passwordIsValidLength(password, "password");
       Validators.usernameIsValidLength(username, "username");
+      Validators.passwordIsValidLength(password, "password");
 
       apiService.login({
           "username": username,

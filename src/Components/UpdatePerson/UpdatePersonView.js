@@ -1,3 +1,4 @@
+import React from 'react';
 const UpdatePersonView=({ handleSubmit, handleEmpty, infoText, translations, errorMessage})=>
     <div>
       <p>{infoText}</p>
