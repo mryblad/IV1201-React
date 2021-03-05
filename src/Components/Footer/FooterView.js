@@ -1,3 +1,4 @@
+import React from 'react';
 const FooterView=({translations, setLanguage})=>
     <div className="footer">
         {/*translations.footerText*/}
