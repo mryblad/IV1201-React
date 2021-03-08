@@ -1,3 +1,4 @@
+import React from 'react';
 const ApplyView=({selectedCompetences,setSelectedCompetences,selectedPeriods,setSelectedPeriods,handleSubmit, translations, lang, options, startDate, setStartDate, onChange})=>
   <div>
     <h1>{translations.title}</h1>

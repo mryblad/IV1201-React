@@ -20,10 +20,11 @@ function ForgotPassword(){
     e.preventDefault();
     let email = e.target.email.value;
 
-    console.log("(mail) Go to this link [link] to reset your password.")
     apiService.resetPassword(email).then(response => {
-      if(response.success)
+      if(response.success){
+        console.log("(mail) Go to this link [link] to reset your password.")
         console.log(response.success.resetLink)
+      }
       else{
         const t = Translations[localStorage.getItem("language") || "en"].forgotPassword;
         setErrorMessage("Error: " + t.error);
