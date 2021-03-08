@@ -4,7 +4,6 @@ import {ListApplicationsResultsView} from './ListApplicationsResultsView';
 import {ListApplicationsSearchView} from './ListApplicationsSearchView';
 import {Translations} from './../../util/Translations'
 import apiService from "../../Services/apiService";
-import Validators from '../../util/Validators';
 
 /**
  * ListApplications presenter

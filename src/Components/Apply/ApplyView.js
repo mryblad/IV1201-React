@@ -1,4 +1,4 @@
-const ApplyView=({selectedCompetences,setSelectedCompetences,selectedPeriods,setSelectedPeriods,handleSubmit, translations, lang, options, startDate, setStartDate, onChange})=>
+const ApplyView=({selectedCompetences,setSelectedCompetences,selectedPeriods,setSelectedPeriods,handleSubmit, translations, lang, options, startDate, setStartDate, onChange,error})=>
   <div>
     <h1>{translations.title}</h1>
     {selectedCompetences.map((entry,i)=>
@@ -35,6 +35,7 @@ const ApplyView=({selectedCompetences,setSelectedCompetences,selectedPeriods,set
       <button type="submit">{translations.addPeriod}</button><br/>
     </form>
     <button onClick={handleSubmit}>{translations.submit}</button>
+    <p>{error}</p>
   </div>
 
 export {ApplyView};

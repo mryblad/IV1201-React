@@ -23,6 +23,17 @@ class Validators{
   }
 
   /**
+   * Checks if the value is an alphabetic string
+   * @param {any} value The value to check
+   * @param {string} varName The name of the variable that holds the value
+   * @throws {AssertionError} If validation fails.
+   */
+   static isAlphaString(value,varName){
+    this.isString(value, varName);
+    assert(/^[a-zA-Z()]+$/.test(value),`${varName} needs to only contain letters.`);
+  }
+
+  /**
    * Checks if the value is a number (can be either a typeof string or number)
    * @param {any} value The value to check
    * @param {string} varName The name of the variable that holds the value

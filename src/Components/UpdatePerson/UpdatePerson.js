@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import {UpdatePersonView} from './UpdatePersonView';
 import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
-import {Translations} from './../../util/Translations'
+import {Translations} from './../../util/Translations';
+import {useHistory} from 'react-router-dom';
 
 /**
  * Handles the Login logic and controlls the LoginView.
@@ -16,9 +17,8 @@ function UpdatePerson(){
   const [missingFields,setMissingFields]=useState({});
   const [infoText,setInfoText]=useState(translations.infoText.fillGeneralInfoText);
   const [promise,setPromise]=useState(apiService.getEmptyFields(token));
-
   const [errorMessage,setErrorMessage]=useState(null);
-
+  const history=useHistory();
   //console.log("(Param) Token found: " + token);
 
   useEffect(() => {
@@ -55,28 +55,54 @@ function UpdatePerson(){
     */
     function handleSubmit(e){
       e.preventDefault();
-      let body = {};
-      if(e.target.firstName.value)
-        body.name = e.target.firstName.value;
-      if(e.target.lastName.value)
-        body.surname = e.target.lastName.value;
-      if(e.target.email.value)
-        body.email = e.target.email.value;
-      if(e.target.ssn.value)
-        body.ssn = e.target.ssn.value;
-      if(e.target.username.value)
-        body.username = e.target.username.value;
-      if(e.target.password.value)
-        body.password = e.target.password.value;
-
-      apiService.updatePerson({body, token}).then(response => {
-        if(response.success)
-          setInfoText(translations.infoText.success);
-        else if(response.error){
-          setErrorMessage("Error: " + translations.error);
-          console.error(response.error);
+      try {
+        let body = {};
+        if(e.target.firstName.value){
+          Validators.stringIsValidLength(e.target.firstName.value, "name");
+          Validators.isAlphaString(e.target.firstName.value,"name");
+          body.name = e.target.firstName.value;
         }
-      });
+        if(e.target.lastName.value){
+          Validators.stringIsValidLength(e.target.lastName.value, "surname");
+          Validators.isAlphaString(e.target.lastName.value,"surname");
+          body.surname = e.target.lastName.value;
+        }
+          
+        if(e.target.email.value){
+          Validators.isEmailValid(e.target.email.value);
+          body.email = e.target.email.value;
+        }
+          
+        if(e.target.ssn.value){
+          Validators.stringIsValidLength(e.target.ssn.value, "ssn");
+          body.ssn = e.target.ssn.value;
+        }
+          
+        if(e.target.username.value){
+          Validators.usernameIsValidLength(e.target.username.value, "username");
+          body.username = e.target.username.value;
+        }
+          
+        if(e.target.password.value){
+          Validators.passwordIsValidLength(e.target.password.value, "password");
+          body.password = e.target.password.value;
+        }
+
+        apiService.updatePerson({body, token}).then(response => {
+          if(response.success){
+            setInfoText(translations.infoText.success);
+            history.push({
+              pathname:'/'
+            });
+          }
+          else if(response.error){
+            setErrorMessage("Error: " + translations.error);
+            //console.error(response.error);
+          }
+        });
+      } catch (error) {
+        setErrorMessage(error.message);
+      }
     }
 
     return createElement(UpdatePersonView,{

@@ -26,7 +26,7 @@ it('should display Email', () => {
 it('should display SSN', () => {
   const wrapper = mount(<CreateAccount/>);
   const text = wrapper.find('[htmlFor="ssn"]');
-  expect(text.text()).toBe("Social Security Number:");
+  expect(text.text()).toBe("Birthdate:");
 })
 
 it('should display Username', () => {
@@ -72,7 +72,7 @@ it('should display SSN in Swedish', () => {
   window.localStorage.setItem("language", "se");
   const wrapper = mount(<CreateAccount/>);
   const text = wrapper.find('[htmlFor="ssn"]');
-  expect(text.text()).toBe("Personnummer:");
+  expect(text.text()).toBe("Födelsedag:");
 })
 
 it('should display Username in Swedish', () => {

@@ -36,9 +36,11 @@ function Authorized({value,children}){
             setCheckedToken(type);
             user.setType(type);
           }
+          /*
           else{
             console.error("INVALID TOKEN");
           }
+          */
         }).catch(err => {
           removeTokens();
         });

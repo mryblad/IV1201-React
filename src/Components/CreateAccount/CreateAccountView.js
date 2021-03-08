@@ -18,7 +18,7 @@ const CreateAccountView=({handleSubmit, translations, errorMessage})=>
         </div>
         <div className="ssn">
           <label htmlFor="ssn">{translations.ssn}:</label>
-          <input type="text" id="ssn" name="ssn" placeholder={translations.placeholder.ssn} required maxLength="20"/><br></br>
+          <input type="date" id="ssn" name="ssn" required /><br></br>
         </div>
         <div className="username">
           <label htmlFor="username">{translations.username}:</label>
