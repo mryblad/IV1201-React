@@ -28,55 +28,62 @@ function CreateAccount(){
     let username = e.target.username.value;
     let password = e.target.password.value;
 
-    Validators.stringIsValidLength(firstName, "name");
-    Validators.stringIsValidLength(lastName, "surname");
-    Validators.isEmailValid(email);
-    Validators.stringIsValidLength(ssn, "ssn");
-    Validators.passwordIsValidLength(password, "password");
-    Validators.usernameIsValidLength(username, "username");
-
-    apiService.registerAccount({
-          "name": firstName,
-          "surname": lastName,
-          "ssn": ssn,
-          "password": password,
-          "email": email,
-          "username": username
+    try {
+      Validators.stringIsValidLength(firstName, "name");
+      Validators.stringIsValidLength(lastName, "surname");
+      Validators.isAlphaString(firstName,"name");
+      Validators.isAlphaString(lastName,"surname");
+      Validators.isEmailValid(email);
+      Validators.stringIsValidLength(ssn, "ssn");
+      Validators.passwordIsValidLength(password, "password");
+      Validators.usernameIsValidLength(username, "username");
+      
+      apiService.registerAccount({
+        "name": firstName,
+        "surname": lastName,
+        "ssn": ssn,
+        "password": password,
+        "email": email,
+        "username": username
       }).then(createResponse => {
-          if(createResponse.success){
-              apiService.login({
-                  "username": username,
-                  "password": password
-              }).then(response=>{
-                  if(response.success){
-                      window.localStorage.setItem("authToken", response.success.token);
-                      window.dispatchEvent(new Event('storage'));
+        if(createResponse.success){
+          apiService.login({
+            "username": username,
+            "password": password
+          }).then(response=>{
+            if(response.success){
+              window.localStorage.setItem("authToken", response.success.token);
+              window.dispatchEvent(new Event('storage'));
 
-                      //If the user has any empty fields in database to fill out
-                      if(response.success.emptyFields){
-                          user.setEmptyFields(response.success.emptyFields);
-                      }
-                  }
-                  else{
-                    const t = Translations[localStorage.getItem("language") || "en"].createAccount;
-                    setErrorMessage("Error: " + t.error.autoLogin);
-                  }
-              })
-          }
-          else if(createResponse.error){
-            console.log(createResponse.error);
-            const t = Translations[localStorage.getItem("language") || "en"].createAccount;
-            if(createResponse.error.includes("username"))
-              setErrorMessage("Error: " + t.error.createAccount.username);
-            else if(createResponse.error.includes("email"))
-              setErrorMessage("Error: " + t.error.createAccount.email);
-          }
+              //If the user has any empty fields in database to fill out
+              if(response.success.emptyFields){
+                  user.setEmptyFields(response.success.emptyFields);
+              }
+            }
+              else{
+                const t = Translations[localStorage.getItem("language") || "en"].createAccount;
+                setErrorMessage("Error: " + t.error.autoLogin);
+              }
+          })
+        }
+        else if(createResponse.error){
+          console.log(createResponse.error);
+          const t = Translations[localStorage.getItem("language") || "en"].createAccount;
+          if(createResponse.error.includes("username"))
+            setErrorMessage("Error: " + t.error.createAccount.username);
+          else if(createResponse.error.includes("email"))
+            setErrorMessage("Error: " + t.error.createAccount.email);
+        }
       }).catch(err => {
         console.log(err);
         const t = Translations[localStorage.getItem("language") || "en"].createAccount;
         setErrorMessage("Error: " + t.error.createAccount);
       });
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   }
+    
 
   return createElement(CreateAccountView,{
       handleSubmit: e => handleSubmit(e),

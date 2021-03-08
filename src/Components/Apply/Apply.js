@@ -15,6 +15,7 @@ function Apply(){
   const [selectedCompetences,setSelectedCompetences]=useState([]);
   const [selectedPeriods,setSelectedPeriods]=useState([]);
   const [startDate, setStartDate]=useState(new Date().toISOString().split("T")[0]);
+  const [error,setError]=useState();
 
   const [unsavedValues,setUnsavedValues]=useState({
     competencies: {
@@ -47,25 +48,32 @@ function Apply(){
     selectedCompetences,
     setSelectedCompetences:e=>{
       e.preventDefault();
-      Validators.isNumber(e.target.experience.value, "e.target.experience.value");
-      console.log(e.target.expertise.value);
-      setSelectedCompetences([...selectedCompetences,{
-        competence_id: e.target.expertise.value,
-        years_of_experience:e.target.experience.value
-      }])
+      try {
+        Validators.isNumber(e.target.experience.value, "Years of experience");
+        setSelectedCompetences([...selectedCompetences,{
+          competence_id: e.target.expertise.value,
+          years_of_experience:e.target.experience.value
+        }])
+      } catch (error) {
+        setError(error.message);
+      }
     },
     selectedPeriods,
     setSelectedPeriods:e=>{
       e.preventDefault();
       let startDate = e.target.startDate.value;
       let endDate = e.target.endDate.value;
-      Validators.isNotPastDate(startDate, "startDate");
-      Validators.isNotPastDate(endDate, "endDate");
-      Validators.dateIsNotPastDate(startDate, endDate, "startDate", "endDate");
-      setSelectedPeriods([...selectedPeriods,{
-        from_date:startDate,
-        to_date:endDate
-      }])
+      try {
+        Validators.isNotPastDate(startDate, "Start Date");
+        Validators.isNotPastDate(endDate, "End Date");
+        Validators.dateIsNotPastDate(startDate, endDate, "Start Date", "End Date");
+        setSelectedPeriods([...selectedPeriods,{
+          from_date:startDate,
+          to_date:endDate
+        }])
+      } catch (error) {
+        setError(error.message);
+      }
     },
     onChange: (e) => {
       switch(e.target.name){
@@ -88,29 +96,42 @@ function Apply(){
       setUnsavedValues(unsavedValues);
     },
     handleSubmit: (e) => {
-      //change name to id
-      selectedCompetences.push(unsavedValues.competencies);
-      selectedPeriods.push(unsavedValues.periods);
+      try {
+        unsavedValues.competencies.years_of_experience&&Validators.isNumber(unsavedValues.competencies.years_of_experience, "Years of experience");
+        unsavedValues.periods.from_date&&Validators.isNotPastDate(unsavedValues.periods.from_date, "Start Date");
+        unsavedValues.periods.to_date&&Validators.isNotPastDate(unsavedValues.periods.to_date, "End Date");
+        unsavedValues.periods.from_date&&unsavedValues.periods.to_date&&Validators.dateIsNotPastDate(unsavedValues.periods.from_date, unsavedValues.periods.to_date, "Start Date", "End Date");
 
-      let filteredCompetences = [];
-      selectedCompetences && selectedCompetences
-      .map(s => s.competence_id == "none" || s.competence_id == null ? null : filteredCompetences
-        .push({competence_id: competencesRaw
-          .find(c=>c.competence_translations
-            .map(t=>t.translation)
-            .includes(s.competence_id)).competence_id, years_of_experience: s.years_of_experience}));
+        //change name to id
+        unsavedValues.competencies.years_of_experience&&selectedCompetences.push(unsavedValues.competencies);
+        unsavedValues.periods.from_date&&unsavedValues.periods.to_date&&selectedPeriods.push(unsavedValues.periods);
 
-      //api call
-      apiService.submitApplication({
-        competencies:filteredCompetences,
-        periods:selectedPeriods
-      }).then(dt=>alert("Application submitted!"))
+        let filteredCompetences = [];
+        selectedCompetences && selectedCompetences
+        .map(s => s.competence_id == "none" || s.competence_id == null ? null : filteredCompetences
+          .push({competence_id: competencesRaw
+            .find(c=>c.competence_translations
+              .map(t=>t.translation)
+              .includes(s.competence_id)).competence_id, years_of_experience: s.years_of_experience}));
+
+        Validators.isNotEmpty(filteredCompetences,"Competences");
+        Validators.isNotEmpty(selectedPeriods,"Periods");
+
+        //api call
+        apiService.submitApplication({
+          competencies:filteredCompetences,
+          periods:selectedPeriods
+        }).then(dt=>alert("Application submitted!"))
+      } catch (error) {
+        setError(error.message);
+      }
     },
     translations: Translations[localStorage.getItem("language") || "en"].apply,
     lang: Translations[localStorage.getItem("language") || "en"],
     options: competences,
     startDate: startDate,
     setStartDate: setStartDate,
+    error
   });
 }
 

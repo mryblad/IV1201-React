@@ -4,7 +4,6 @@ import {Header} from './Components/Header/Header';
 import {Footer} from './Components/Footer/Footer';
 import {Menu} from './Components/Menu/Menu';
 import {HomePage} from './Components/HomePage/HomePage';
-import {Example} from './Components/Example/Example';
 import {Login} from './Components/Login/Login';
 import {ForgotPassword} from './Components/ForgotPassword/ForgotPassword';
 import {UpdatePerson} from './Components/UpdatePerson/UpdatePerson';
@@ -23,7 +22,6 @@ const App=()=>
       <div className="flexParent">
         <Menu/>
         <div className="mainContent">
-          <Route path="/example" component={Example}/>
           <UserType value="recruiter">
             <Switch>
               <Route path="/applications" component={ListApplications}/>

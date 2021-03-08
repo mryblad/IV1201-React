@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 const MenuView=({type,translations})=>
     <div className="menu">
         <ul>
-            <li><Link to="/example">{translations.example}</Link></li>
             {type==="applicant"?
             <Fragment>
                 <li><Link to="/apply">{translations.apply}</Link></li>

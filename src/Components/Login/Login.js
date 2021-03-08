@@ -1,7 +1,6 @@
 import {createElement, useState} from 'react';
 import {LoginView} from './LoginView';
 import apiService from "../../Services/apiService";
-import Validators from '../../util/Validators';
 import {Translations} from './../../util/Translations';
 import user from "../../Model/User";
 
@@ -20,10 +19,6 @@ function Login(){
       e.preventDefault();
       let username = e.target.username.value
       let password = e.target.password.value
-
-      //validate username and password
-      Validators.usernameIsValidLength(username, "username");
-      Validators.passwordIsValidLength(password, "password");
 
       apiService.login({
           "username": username,
