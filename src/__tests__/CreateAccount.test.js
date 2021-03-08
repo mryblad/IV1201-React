@@ -89,7 +89,7 @@ it('should display Password in Swedish', () => {
   expect(text.text()).toBe("Lösenord:");
 })
 
-it('should display Create Account button', () => {
+it('should display Create Account button in Swedish', () => {
   window.localStorage.setItem("language", "se");
   const wrapper = mount(<CreateAccount/>);
   const text = wrapper.find('[type="submit"]');
