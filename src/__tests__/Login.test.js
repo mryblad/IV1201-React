@@ -22,11 +22,6 @@ describe('Login', () => {
   });
   it('Logging in with invalid credentials should display error to user', async () => {
     const wrapper = mount(<Router><Login/></Router>);
-    // GAMMAL KOD SOM ev. REFERENS:
-    // const username = wrapper.find("input").first();
-    // username.simulate('change', { target: { value: 'ausernamethatnoonehas' } })
-    // username.instance().value = "teststs";
-    // username.simulate('change');
     global.fetch = jest.fn(() =>
       Promise.resolve({
         json: () => Promise.resolve({error: new Error("Fake test error")}),

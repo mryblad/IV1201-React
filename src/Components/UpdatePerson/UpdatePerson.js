@@ -23,7 +23,6 @@ function UpdatePerson(){
 
   useEffect(() => {
     promise && promise.then(e => {
-      //console.log(e);
       if(e.success){
         if(e.success.emptyFields)
           setMissingFields(e.success.emptyFields);
@@ -67,22 +66,22 @@ function UpdatePerson(){
           Validators.isAlphaString(e.target.lastName.value,"surname");
           body.surname = e.target.lastName.value;
         }
-          
+
         if(e.target.email.value){
           Validators.isEmailValid(e.target.email.value);
           body.email = e.target.email.value;
         }
-          
+
         if(e.target.ssn.value){
           Validators.stringIsValidLength(e.target.ssn.value, "ssn");
           body.ssn = e.target.ssn.value;
         }
-          
+
         if(e.target.username.value){
           Validators.usernameIsValidLength(e.target.username.value, "username");
           body.username = e.target.username.value;
         }
-          
+
         if(e.target.password.value){
           Validators.passwordIsValidLength(e.target.password.value, "password");
           body.password = e.target.password.value;

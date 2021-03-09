@@ -8,7 +8,6 @@ import apiService from '../../Services/apiService';
  * ShowApplication presenter
  */
 function ShowApplication(props){
-
     const [language,setLanguage]=useState(localStorage.getItem("language") || "en");
     const [translations,setTranslations]=useState(Translations[language].showApplication);
     const history=useHistory();

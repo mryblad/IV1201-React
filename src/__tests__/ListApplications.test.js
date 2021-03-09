@@ -155,14 +155,55 @@ describe('ListApplications', () => {
     await act(async () => {
       form.name.value = "unknown";
       wrapper.find('button').first().simulate('submit', {target: form});
-      form.name.value = "unknown";
+      form.name.value = "";
     });
     expect(wrapper.find('tbody').text()).not.toContain("Per Strand");
-    expect(wrapper.find('tbody').text()).not.toContain("hans");
+    expect(wrapper.find('tbody').text()).not.toContain("hans hans");
+  });
+  it('Filter with available start date should only show one application', async() => {
+    const wrapper = mount(<ListApplications/>);
+    await act(async () => {
+      form.start.value = "2021-01-01";
+      wrapper.find('button').first().simulate('submit', {target: form});
+      form.start.value = "";
+    });
+    expect(wrapper.find('tbody').text()).not.toContain("Per Strand");
+    expect(wrapper.find('tbody').text()).toContain("hans hans");
+  });
+  it('Filter with available end date should only show one application', async() => {
+    const wrapper = mount(<ListApplications/>);
+    await act(async () => {
+      form.end.value = "2021-01-01";
+      wrapper.find('button').first().simulate('submit', {target: form});
+      form.end.value = "";
+    });
+    expect(wrapper.find('tbody').text()).toContain("Per Strand");
+    expect(wrapper.find('tbody').text()).not.toContain("hans hans");
+  });
+  it('Filter with application start date should only show one application', async() => {
+    const wrapper = mount(<ListApplications/>);
+    await act(async () => {
+      form.applicationstart.value = "2021-01-01";
+      wrapper.find('button').first().simulate('submit', {target: form});
+      form.applicationstart.value = "";
+    });
+    expect(wrapper.find('tbody').text()).not.toContain("Per Strand");
+    expect(wrapper.find('tbody').text()).toContain("hans hans");
+  });
+  it('Filter with application end date should only show one application', async() => {
+    const wrapper = mount(<ListApplications/>);
+    await act(async () => {
+      form.applicationend.value = "2021-05-01";
+      wrapper.find('button').first().simulate('submit', {target: form});
+      form.applicationend.value = "";
+    });
+    expect(wrapper.find('tbody').text()).not.toContain("Per Strand");
+    expect(wrapper.find('tbody').text()).toContain("hans hans");
   });
   it('Error response from REST should result in an error showing', async() => {
     const wrapper = mount(<ListApplications/>);
     await act(async () => {
+      form.name.value = "errorme";
       getApplicationsSpy.mockReturnValue(Promise.resolve({error: new Error("test error")}));
       wrapper.find('button').first().simulate('submit', {target: form});
     });
