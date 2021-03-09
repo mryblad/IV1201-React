@@ -91,6 +91,7 @@ function UpdatePerson(){
 
         apiService.updatePerson({body, token}).then(response => {
           if(response.success){
+            setInfoText(translations.infoText.success);
             alert(translations.infoText.success);
             history.push({
               pathname:'/'

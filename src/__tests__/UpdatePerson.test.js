@@ -37,6 +37,8 @@ const form = {
 
 const getEmptyFieldsSpy = jest.spyOn(apiService, 'getEmptyFields');
 const updatePersonSpy = jest.spyOn(apiService, 'updatePerson');
+const alertSpy = jest.spyOn(window, 'alert');
+alertSpy.mockReturnValue(null);
 
 describe('UpdatePerson', () => {
   it('Update person with full data should only display password change', async() => {
@@ -87,7 +89,7 @@ describe('UpdatePerson', () => {
 
     expect(updatePersonSpy).toHaveBeenCalledTimes(1);
     expect(oldHtml).not.toBe(wrapper.html());
-    expect(wrapper.html()).toContain("Changes saved successfully!")
+    expect(wrapper.html()).toContain("Changes saved successfully!");
   });
   it('Click update person with partly lacking data with forced error should show in view', async() => {
     getEmptyFieldsSpy.mockReturnValue(Promise.resolve(lackingData));
