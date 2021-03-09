@@ -2,7 +2,7 @@ import React from 'react';
 const ListApplicationsResultsView=({applications,error,handleRowClick,translations})=>
     <div>
         {error?<div>
-            {translations.error}
+            {"Error: " + translations.error}
         </div>:
         <table>
             <thead>
