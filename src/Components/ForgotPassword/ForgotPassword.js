@@ -21,7 +21,8 @@ function ForgotPassword(){
 
     apiService.resetPassword(email).then(response => {
       if(response.success){
-        window.location=response.success.resetLink;
+        console.log("(mail) Go to this link [link] to reset your password.");
+        console.log(response.success.resetLink);
       }
       else{
         const t = Translations[localStorage.getItem("language") || "en"].forgotPassword;
