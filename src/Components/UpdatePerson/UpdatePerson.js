@@ -7,7 +7,7 @@ import {Translations} from './../../util/Translations';
 import {useHistory} from 'react-router-dom';
 
 /**
- * Handles the Login logic and controlls the LoginView.
+ * Handles the update person logic and controls the UpdatePersonView.
  */
 function UpdatePerson(){
   let token = useParams().token;
@@ -50,7 +50,7 @@ function UpdatePerson(){
   }
 
    /**
-    * Handles what happens when the "set password" form is submitted.
+    * Handles what happens when the missing fields/set password form is submitted.
     * @param {HTML form} e The form that was submitted.
     */
     function handleSubmit(e){
@@ -79,8 +79,10 @@ function UpdatePerson(){
         }
           
         if(e.target.username.value){
-          Validators.usernameIsValidLength(e.target.username.value, "username");
-          body.username = e.target.username.value;
+          if(missingFields["username"]){
+            Validators.usernameIsValidLength(e.target.username.value, "username");
+            body.username = e.target.username.value;
+          }
         }
           
         if(e.target.password.value){
@@ -90,7 +92,7 @@ function UpdatePerson(){
 
         apiService.updatePerson({body, token}).then(response => {
           if(response.success){
-            setInfoText(translations.infoText.success);
+            alert(translations.infoText.success);
             history.push({
               pathname:'/'
             });

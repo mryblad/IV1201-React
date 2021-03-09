@@ -4,7 +4,6 @@ import apiService from "../../Services/apiService";
 import Validators from '../../util/Validators';
 import {Translations} from './../../util/Translations'
 
-
 /**
  * Handles the Login logic and controlls the LoginView.
  */
@@ -20,10 +19,10 @@ function ForgotPassword(){
     e.preventDefault();
     let email = e.target.email.value;
 
-    console.log("(mail) Go to this link [link] to reset your password.")
     apiService.resetPassword(email).then(response => {
-      if(response.success)
-        console.log(response.success.resetLink)
+      if(response.success){
+        window.location=response.success.resetLink
+      }
       else{
         const t = Translations[localStorage.getItem("language") || "en"].forgotPassword;
         setErrorMessage("Error: " + t.error);
@@ -34,7 +33,7 @@ function ForgotPassword(){
   return createElement(ForgotPasswordView,{
       handleSubmit: e => handleSubmit(e),
       translations: Translations[localStorage.getItem("language") || "en"].forgotPassword,
-      errorMessage: errorMessage,
+      errorMessage,
   });
 }
 
