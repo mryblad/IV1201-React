@@ -19,7 +19,14 @@ function ShowApplication(props){
                 application_status,
                 version_number:props.location.application.version_number
             })
-            .then(res=>alert(translations.msg))
+            .then(res=>{
+                if(res.success){
+                    alert(translations.msg)
+                }
+                else{
+                    alert(translations.errMsg)
+                }
+            })
             .catch(err=>alert(translations.errMsg));
             history.goBack();
         },
