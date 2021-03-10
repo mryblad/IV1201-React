@@ -5,6 +5,14 @@ import {CreateAccount} from "./../Components/CreateAccount/CreateAccount";
 
 Enzyme.configure({ adapter: new Adapter() });
 
+it('Pressing create account button without input should not change anything', () => {
+  const wrapper = mount(<CreateAccount/>);
+  const saved = wrapper.html();
+  wrapper.find("button").first().simulate("click");
+  wrapper.update();
+  expect(saved).toBe(wrapper.html());
+});
+
 it('should display First Name', () => {
   const wrapper = mount(<CreateAccount/>);
   const text = wrapper.find('[htmlFor="firstName"]');
