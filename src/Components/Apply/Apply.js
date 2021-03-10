@@ -9,6 +9,8 @@ import {Translations} from './../../util/Translations'
  */
 function Apply(){
 
+  const translations = Translations[localStorage.getItem("language") || "en"].apply;
+
   const [competencesRaw,setCompetencesRaw]=useState(null);
   const [competences,setCompetences]=useState(null);
   const [promise,setPromise]=useState(apiService.getCompetences());
@@ -55,7 +57,7 @@ function Apply(){
           years_of_experience:e.target.experience.value
         }])
       } catch (error) {
-        setError(error.message);
+        setError("Error: " + translations.error.yoe);
       }
     },
     selectedPeriods,
@@ -72,7 +74,7 @@ function Apply(){
           to_date:endDate
         }])
       } catch (error) {
-        setError(error.message);
+        setError("Error: " + translations.error.periods);
       }
     },
     onChange: (e) => {
@@ -97,10 +99,20 @@ function Apply(){
     },
     handleSubmit: (e) => {
       try {
-        unsavedValues.competencies.years_of_experience&&Validators.isNumber(unsavedValues.competencies.years_of_experience, "Years of experience");
-        unsavedValues.periods.from_date&&Validators.isNotPastDate(unsavedValues.periods.from_date, "Start Date");
-        unsavedValues.periods.to_date&&Validators.isNotPastDate(unsavedValues.periods.to_date, "End Date");
-        unsavedValues.periods.from_date&&unsavedValues.periods.to_date&&Validators.dateIsNotPastDate(unsavedValues.periods.from_date, unsavedValues.periods.to_date, "Start Date", "End Date");
+        try {
+          unsavedValues.competencies.years_of_experience&&Validators.isNumber(unsavedValues.competencies.years_of_experience, "Years of experience");
+        } catch (err) {
+          setError("Error: " + translations.error.yoe);
+          return;
+        }
+        try {
+          unsavedValues.periods.from_date&&Validators.isNotPastDate(unsavedValues.periods.from_date, "Start Date");
+          unsavedValues.periods.to_date&&Validators.isNotPastDate(unsavedValues.periods.to_date, "End Date");
+          unsavedValues.periods.from_date&&unsavedValues.periods.to_date&&Validators.dateIsNotPastDate(unsavedValues.periods.from_date, unsavedValues.periods.to_date, "Start Date", "End Date");
+        } catch (err) {
+          setError("Error: " + translations.error.periods);
+          return;
+        }
 
         //change name to id
         unsavedValues.competencies.years_of_experience&&selectedCompetences.push(unsavedValues.competencies);
@@ -114,8 +126,14 @@ function Apply(){
               .map(t=>t.translation)
               .includes(s.competence_id)).competence_id, years_of_experience: s.years_of_experience}));
 
-        Validators.isNotEmpty(filteredCompetences,"Competences");
-        Validators.isNotEmpty(selectedPeriods,"Periods");
+
+        try {
+          Validators.isNotEmpty(filteredCompetences,"Competences");
+          Validators.isNotEmpty(selectedPeriods,"Periods");
+        } catch (err) {
+          setError("Error: " + translations.error.empty);
+          return;
+        }
 
         //api call
         apiService.submitApplication({
@@ -123,10 +141,11 @@ function Apply(){
           periods:selectedPeriods
         }).then(dt=>alert("Application submitted!"))
       } catch (error) {
+        console.error(error);
         setError(error.message);
       }
     },
-    translations: Translations[localStorage.getItem("language") || "en"].apply,
+    translations: translations,
     lang: Translations[localStorage.getItem("language") || "en"],
     options: competences,
     startDate: startDate,

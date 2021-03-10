@@ -12,7 +12,7 @@ import {useHistory} from 'react-router-dom';
 function UpdatePerson(){
   let token = useParams().token;
 
-  let translations = Translations[localStorage.getItem("language") || "en"].updatePerson;
+  const translations = Translations[localStorage.getItem("language") || "en"].updatePerson;
 
   const [missingFields,setMissingFields]=useState({});
   const [infoText,setInfoText]=useState(translations.infoText.fillGeneralInfoText);
@@ -57,36 +57,62 @@ function UpdatePerson(){
       try {
         let body = {};
         if(e.target.firstName.value){
-          Validators.stringIsValidLength(e.target.firstName.value, "name");
-          Validators.isAlphaString(e.target.firstName.value,"name");
-          body.name = e.target.firstName.value;
-        }
-        if(e.target.lastName.value){
-          Validators.stringIsValidLength(e.target.lastName.value, "surname");
-          Validators.isAlphaString(e.target.lastName.value,"surname");
-          body.surname = e.target.lastName.value;
-        }
-
-        if(e.target.email.value){
-          Validators.isEmailValid(e.target.email.value);
-          body.email = e.target.email.value;
-        }
-
-        if(e.target.ssn.value){
-          Validators.stringIsValidLength(e.target.ssn.value, "ssn");
-          body.ssn = e.target.ssn.value;
-        }
-
-        if(e.target.username.value){
-          if(missingFields["username"]){
-            Validators.usernameIsValidLength(e.target.username.value, "username");
-            body.username = e.target.username.value;
+          try{
+            Validators.stringIsValidLength(e.target.firstName.value, "name");
+            Validators.isAlphaString(e.target.firstName.value,"name");
+            body.name = e.target.firstName.value;
+          } catch (err) {
+            setErrorMessage("Error: " + translations.error.validators.name);
+            return;
           }
         }
-
+        if(e.target.lastName.value){
+          try{
+            Validators.stringIsValidLength(e.target.lastName.value, "surname");
+            Validators.isAlphaString(e.target.lastName.value,"surname");
+            body.surname = e.target.lastName.value;
+          } catch (err) {
+            setErrorMessage("Error: " + translations.error.validators.surname);
+            return;
+          }
+        }
+        if(e.target.email.value){
+          try{
+            Validators.isEmailValid(e.target.email.value);
+            body.email = e.target.email.value;
+          } catch (err) {
+            setErrorMessage("Error: " + translations.error.validators.email);
+            return;
+          }
+        }
+        if(e.target.ssn.value){
+          try{
+            Validators.stringIsValidLength(e.target.ssn.value, "ssn");
+            body.ssn = e.target.ssn.value;
+          } catch (err) {
+            setErrorMessage("Error: " + translations.error.validators.ssn);
+            return;
+          }
+        }
+        if(e.target.username.value){
+          if(missingFields["username"]){
+            try{
+              Validators.usernameIsValidLength(e.target.username.value, "username");
+              body.username = e.target.username.value;
+            } catch (err) {
+              setErrorMessage("Error: " + translations.error.validators.username);
+              return;
+            }
+          }
+        }
         if(e.target.password.value){
-          Validators.passwordIsValidLength(e.target.password.value, "password");
-          body.password = e.target.password.value;
+          try{
+            Validators.passwordIsValidLength(e.target.password.value, "password");
+            body.password = e.target.password.value;
+          } catch (err) {
+            setErrorMessage("Error: " + translations.error.validators.password);
+            return;
+          }
         }
 
         apiService.updatePerson({body, token}).then(response => {
@@ -98,11 +124,12 @@ function UpdatePerson(){
             });
           }
           else if(response.error){
-            setErrorMessage("Error: " + translations.error);
+            setErrorMessage("Error: " + translations.saveFailed);
             //console.error(response.error);
           }
         });
       } catch (error) {
+        console.error(error);
         setErrorMessage(error.message);
       }
     }

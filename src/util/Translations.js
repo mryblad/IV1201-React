@@ -60,6 +60,14 @@ export const Translations = {
           username: "Failed to create account. Username already taken",
           email: "Failed to create account. Email already in use",
         },
+        validators: {
+          name: "First Name needs to be only characters and within 20 characters long",
+          surname: "Last Name needs to be only characters and within 20 characters long",
+          email: "Email has to be a valid email",
+          ssn: "Birthdate has to be a valid",
+          password: "Password has to 24 characters or less",
+          username: "Username has to 16 characters or less",
+        },
       },
     },
     "updatePerson": {
@@ -80,7 +88,17 @@ export const Translations = {
         fillGeneralInfoText: "Please fill out this information to continue",
         success: "Changes saved successfully!"
       },
-      error: "Failed to save changes, try again in a moment.",
+      error: {
+        saveFailed: "Failed to save changes, try again in a moment.",
+        validators: {
+          name: "First Name needs to be only characters and within 20 characters long",
+          surname: "Last Name needs to be only characters and within 20 characters long",
+          email: "Email has to be a valid email",
+          ssn: "Birthdate has to be a valid",
+          password: "Password has to 24 characters or less",
+          username: "Username has to 16 characters or less",
+        },
+      },
     },
     "apply": {
       title: "APPLICATION",
@@ -92,6 +110,11 @@ export const Translations = {
       to: "to",
       addPeriod: "Add Period",
       submit: "Submit",
+      error: {
+        yoe: "Years of experience needs to be a number",
+        periods: "Application periods have to be valid",
+        empty: "Availabilityperiods cannot be empty",
+      },
     },
     "homePage": {
       header: "IV1201 Group 14 Recruiting Application",
@@ -191,6 +214,14 @@ export const Translations = {
           email: "Kunde inte skapa konto, emailadressen är kopplat till ett annat konto",
         },
       },
+      validators: {
+        name: "Förnamn måste bestå av bara bokstäver och vara inom 20 tecken långt",
+        surname: "Efternamn måste bestå av bara bokstäver och vara inom 20 tecken långt",
+        email: "Email måste vara giltig",
+        ssn: "Birthdate måste vara giltig",
+        password: "Lösenordet måste vara inom 24 karaktärer långt",
+        username: "Användarnamnet måste vara inom 24 karaktärer långt",
+      },
     },
     "updatePerson": {
       firstName: "Förnamn",
@@ -210,7 +241,17 @@ export const Translations = {
         fillGeneralInfoText: "Var god fyll i följande information för att fortsätta",
         success: "Ändringarna har sparats!"
       },
-      error: "Ändringen misslyckades, försök igen senare",
+      error: {
+        saveFailed: "Ändringen misslyckades, försök igen senare",
+        validators: {
+          name: "Förnamn måste bestå av bara bokstäver och vara inom 20 tecken långt",
+          surname: "Efternamn måste bestå av bara bokstäver och vara inom 20 tecken långt",
+          email: "Email måste vara giltig",
+          ssn: "Birthdate måste vara giltig",
+          password: "Lösenordet måste vara inom 24 karaktärer långt",
+          username: "Användarnamnet måste vara inom 24 karaktärer långt",
+        },
+      },
     },
     "apply": {
       title: "ANSÖKAN",
@@ -222,6 +263,11 @@ export const Translations = {
       to: "till",
       addPeriod: "Lägg till period",
       submit: "Ansök",
+      error: {
+        yoe: "År av erfarenhet måste vara ett nummer",
+        periods: "Ansöksperioden måste vara giltig",
+        empty: "Tillgänglighetperioder får ej vara tomma",
+      }
     },
     "homePage": {
       header: "IV1201 Grupp 14 Rekryteringsapplikation",

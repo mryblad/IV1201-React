@@ -28,16 +28,52 @@ function CreateAccount(){
     let username = e.target.username.value;
     let password = e.target.password.value;
 
+    const t = Translations[localStorage.getItem("language") || "en"].createAccount;
+
     try {
-      Validators.stringIsValidLength(firstName, "name");
-      Validators.stringIsValidLength(lastName, "surname");
-      Validators.isAlphaString(firstName,"name");
-      Validators.isAlphaString(lastName,"surname");
-      Validators.isEmailValid(email);
-      Validators.stringIsValidLength(ssn, "ssn");
-      Validators.passwordIsValidLength(password, "password");
-      Validators.usernameIsValidLength(username, "username");
-      
+      try{
+        Validators.stringIsValidLength(firstName, "name");
+        Validators.isAlphaString(firstName, "name")
+      } catch (err) {
+        setErrorMessage("Error: " + t.error.validators.name);
+      }
+      try{
+        Validators.stringIsValidLength(lastName, "surname");
+        Validators.isAlphaString(lastName,"surname");
+      } catch (err) {
+        setErrorMessage("Error: " + t.error.validators.surname);
+      }
+      try{
+        Validators.isEmailValid(email);
+      } catch (err) {
+        setErrorMessage("Error: " + t.error.validators.email);
+      }
+      try{
+        Validators.stringIsValidLength(ssn, "ssn");
+      } catch (err) {
+        setErrorMessage("Error: " + t.error.validators.ssn);
+      }
+      try{
+        Validators.passwordIsValidLength(password, "password");
+      } catch (err) {
+        setErrorMessage("Error: " + t.error.validators.password);
+      }
+      try{
+        Validators.usernameIsValidLength(username, "username");
+      } catch (err) {
+        setErrorMessage("Error: " + t.error.validators.username);
+      }
+
+
+      //Validators.stringIsValidLength(firstName, "name")
+      //Validators.isAlphaString(firstName,"name");
+      // Validators.stringIsValidLength(lastName, "surname");
+      // Validators.isAlphaString(lastName,"surname");
+      //Validators.isEmailValid(email);
+      // Validators.stringIsValidLength(ssn, "ssn");
+      // Validators.passwordIsValidLength(password, "password");
+      // Validators.usernameIsValidLength(username, "username");
+
       apiService.registerAccount({
         "name": firstName,
         "surname": lastName,
@@ -61,14 +97,12 @@ function CreateAccount(){
               }
             }
               else{
-                const t = Translations[localStorage.getItem("language") || "en"].createAccount;
                 setErrorMessage("Error: " + t.error.autoLogin);
               }
           })
         }
         else if(createResponse.error){
           console.log(createResponse.error);
-          const t = Translations[localStorage.getItem("language") || "en"].createAccount;
           if(createResponse.error.includes("username"))
             setErrorMessage("Error: " + t.error.createAccount.username);
           else if(createResponse.error.includes("email"))
@@ -76,14 +110,14 @@ function CreateAccount(){
         }
       }).catch(err => {
         console.log(err);
-        const t = Translations[localStorage.getItem("language") || "en"].createAccount;
         setErrorMessage("Error: " + t.error.createAccount);
       });
     } catch (error) {
-      setErrorMessage(error.message);
+      console.error(error);
+      setErrorMessage("Error: " + error.message);
     }
   }
-    
+
 
   return createElement(CreateAccountView,{
       handleSubmit: e => handleSubmit(e),
