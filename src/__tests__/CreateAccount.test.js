@@ -7,6 +7,12 @@ import { act } from "react-dom/test-utils"; //needed when renderer uses useState
 
 Enzyme.configure({ adapter: new Adapter() });
 
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve({error: new Error("Fake test error")}),
+  })
+);
+
 it('Pressing create account button without input should not change anything', () => {
   const wrapper = mount(<CreateAccount/>);
   const saved = wrapper.html();
@@ -17,11 +23,6 @@ it('Pressing create account button without input should not change anything', ()
 
 it('Creating account with invalid name should display error to user', async () => {
   const wrapper = mount(<CreateAccount/>);
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () => Promise.resolve({error: new Error("Fake test error")}),
-    })
-  );
   await act(async () => {
     wrapper.find('form').simulate('submit', {target: {firstName: {value: "12345"}, lastName: {value: "fakesson"}, ssn: {value: "2021-01-01"}, password: {value: "fakepass"}, email: {value: "fake@fakesson.se"}, username: {value: "fakename"}}});
   });
@@ -31,11 +32,6 @@ it('Creating account with invalid name should display error to user', async () =
 
 it('Creating account with invalid email should display error to user', async () => {
   const wrapper = mount(<CreateAccount/>);
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () => Promise.resolve({error: new Error("Fake test error")}),
-    })
-  );
   await act(async () => {
     wrapper.find('form').simulate('submit', {target: {firstName: {value: "fake"}, lastName: {value: "fakesson"}, ssn: {value: "2021-01-01"}, password: {value: "fakepass"}, email: {value: "fake.fakesson.se"}, username: {value: "fakename"}}});
   });
@@ -45,11 +41,6 @@ it('Creating account with invalid email should display error to user', async () 
 
 it('Creating account with invalid birthdate should display error to user', async () => {
   const wrapper = mount(<CreateAccount/>);
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () => Promise.resolve({error: new Error("Fake test error")}),
-    })
-  );
   await act(async () => {
     wrapper.find('form').simulate('submit', {target: {firstName: {value: "fake"}, lastName: {value: "fakesson"}, ssn: {value: "fakebirthdayyyyyyyyyyyyyyyyyyy"}, password: {value: "fakepass"}, email: {value: "fake@fakesson.se"}, username: {value: "fakename"}}});
   });
@@ -59,11 +50,6 @@ it('Creating account with invalid birthdate should display error to user', async
 
 it('Creating account with invalid username should display error to user', async () => {
   const wrapper = mount(<CreateAccount/>);
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () => Promise.resolve({error: new Error("Fake test error")}),
-    })
-  );
   await act(async () => {
     wrapper.find('form').simulate('submit', {target: {firstName: {value: "fake"}, lastName: {value: "fakesson"}, ssn: {value: "2021-01-01"}, password: {value: "fakepass"}, email: {value: "fake@fakesson.se"}, username: {value: "fakenameeeeeeeeeeeeeeeeeeeeeee"}}});
   });
@@ -73,11 +59,6 @@ it('Creating account with invalid username should display error to user', async 
 
 it('Creating account with invalid password should display error to user', async () => {
   const wrapper = mount(<CreateAccount/>);
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () => Promise.resolve({error: new Error("Fake test error")}),
-    })
-  );
   await act(async () => {
     wrapper.find('form').simulate('submit', {target: {firstName: {value: "fake"}, lastName: {value: "fakesson"}, ssn: {value: "2021-01-01"}, password: {value: "fakepassssssssssssssssssssssss"}, email: {value: "fake@fakesson.se"}, username: {value: "fakename"}}});
   });
@@ -130,11 +111,6 @@ it('should display Create Account button', () => {
 it('Creating account with invalid name should display error to user in Swedish', async () => {
   window.localStorage.setItem("language", "se");
   const wrapper = mount(<CreateAccount/>);
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () => Promise.resolve({error: new Error("Fake test error")}),
-    })
-  );
   await act(async () => {
     wrapper.find('form').simulate('submit', {target: {firstName: {value: "12345"}, lastName: {value: "fakesson"}, ssn: {value: "2021-01-01"}, password: {value: "fakepass"}, email: {value: "fake@fakesson.se"}, username: {value: "fakename"}}});
   });
