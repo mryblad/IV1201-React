@@ -55,6 +55,7 @@ export const Translations = {
         ssn: "YYMMDDXXXX",
       },
       error: {
+        apiFail: "API fetch request failed",
         autoLogin: "Failed to login to new account, try to log in manually.",
         createAccount: {
           username: "Failed to create account. Username already taken",
@@ -208,19 +209,20 @@ export const Translations = {
         ssn: "YYMMDDXXXX",
       },
       error: {
+        apiFail: "API fetch förfrågan misslyckades",
         autoLogin: "Inloggning till nytt konto misslyckades, försök igen manuellt.",
         createAccount: {
           username: "Kunde inte skapa konto, användarnamnet är upptaget.",
           email: "Kunde inte skapa konto, emailadressen är kopplat till ett annat konto",
         },
-      },
-      validators: {
-        name: "Förnamn måste bestå av bara bokstäver och vara inom 20 tecken långt",
-        surname: "Efternamn måste bestå av bara bokstäver och vara inom 20 tecken långt",
-        email: "Email måste vara giltig",
-        ssn: "Birthdate måste vara giltig",
-        password: "Lösenordet måste vara inom 24 karaktärer långt",
-        username: "Användarnamnet måste vara inom 24 karaktärer långt",
+        validators: {
+          name: "Förnamn måste bestå av bara bokstäver och vara inom 20 tecken långt",
+          surname: "Efternamn måste bestå av bara bokstäver och vara inom 20 tecken långt",
+          email: "Email måste vara giltig",
+          ssn: "Birthdate måste vara giltig",
+          password: "Lösenordet måste vara inom 24 karaktärer långt",
+          username: "Användarnamnet måste vara inom 24 karaktärer långt",
+        },
       },
     },
     "updatePerson": {

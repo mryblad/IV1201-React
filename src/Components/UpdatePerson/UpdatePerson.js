@@ -124,8 +124,7 @@ function UpdatePerson(){
             });
           }
           else if(response.error){
-            setErrorMessage("Error: " + translations.saveFailed);
-            //console.error(response.error);
+            setErrorMessage("Error: " + translations.error.saveFailed);
           }
         });
       } catch (error) {

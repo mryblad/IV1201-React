@@ -110,7 +110,7 @@ function CreateAccount(){
         }
       }).catch(err => {
         console.log(err);
-        setErrorMessage("Error: " + t.error.createAccount);
+        setErrorMessage("Error: " + t.error.apiFail);
       });
     } catch (error) {
       console.error(error);
