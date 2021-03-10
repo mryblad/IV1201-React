@@ -36,32 +36,38 @@ function CreateAccount(){
         Validators.isAlphaString(firstName, "name")
       } catch (err) {
         setErrorMessage("Error: " + t.error.validators.name);
+        return;
       }
       try{
         Validators.stringIsValidLength(lastName, "surname");
         Validators.isAlphaString(lastName,"surname");
       } catch (err) {
         setErrorMessage("Error: " + t.error.validators.surname);
+        return;
       }
       try{
         Validators.isEmailValid(email);
       } catch (err) {
         setErrorMessage("Error: " + t.error.validators.email);
+        return;
       }
       try{
         Validators.stringIsValidLength(ssn, "ssn");
       } catch (err) {
         setErrorMessage("Error: " + t.error.validators.ssn);
+        return;
       }
       try{
         Validators.passwordIsValidLength(password, "password");
       } catch (err) {
         setErrorMessage("Error: " + t.error.validators.password);
+        return;
       }
       try{
         Validators.usernameIsValidLength(username, "username");
       } catch (err) {
         setErrorMessage("Error: " + t.error.validators.username);
+        return;
       }
 
 

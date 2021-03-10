@@ -50,6 +50,7 @@ function Apply(){
     selectedCompetences,
     setSelectedCompetences:e=>{
       e.preventDefault();
+
       try {
         Validators.isNumber(e.target.experience.value, "Years of experience");
         setSelectedCompetences([...selectedCompetences,{
@@ -126,9 +127,8 @@ function Apply(){
               .map(t=>t.translation)
               .includes(s.competence_id)).competence_id, years_of_experience: s.years_of_experience}));
 
-
         try {
-          Validators.isNotEmpty(filteredCompetences,"Competences");
+          //Validators.isNotEmpty(filteredCompetences,"Competences");
           Validators.isNotEmpty(selectedPeriods,"Periods");
         } catch (err) {
           setError("Error: " + translations.error.empty);
