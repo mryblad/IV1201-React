@@ -142,7 +142,7 @@ function Apply(){
           competencies:filteredCompetences,
           periods:selectedPeriods
         }).then(dt=>{
-          alert("Application submitted!");
+          alert(translations.submitted);
           history.goBack();
         })
       } catch (error) {
