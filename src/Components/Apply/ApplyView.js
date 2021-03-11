@@ -30,9 +30,9 @@ const ApplyView=({selectedCompetences,setSelectedCompetences,selectedPeriods,set
     </div>)}
     <form onSubmit={e=>setSelectedPeriods(e)}>
       <label htmlFor="startDate">{translations.startDate}:</label>
-      <input type="date" id="startDate" name="startDate" min={new Date().toISOString().split("T")[0]} onChange={e => {setStartDate(e.target.value); onChange(e)}}></input>
+      <input type="date" id="startDate" name="startDate" placeholder={translations.placeholder.date} min={new Date().toISOString().split("T")[0]} onChange={e => {setStartDate(e.target.value); onChange(e)}}></input>
       <label htmlFor="endDate">{translations.to}:</label>
-      <input type="date" id="endDate" name="endDate" onChange={e => onChange(e)} min={startDate}></input><br/>
+      <input type="date" id="endDate" name="endDate" placeholder={translations.placeholder.date} onChange={e => onChange(e)} min={startDate}></input><br/>
       <button type="submit">{translations.addPeriod}</button><br/>
     </form>
     <button onClick={handleSubmit}>{translations.submit}</button>

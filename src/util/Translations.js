@@ -52,7 +52,7 @@ export const Translations = {
       homeRedirect: "Home",
       placeholder: {
         email: "example@email.com",
-        ssn: "YYMMDDXXXX",
+        ssn: "dd-mm-yyyy",
       },
       error: {
         apiFail: "API fetch request failed",
@@ -82,7 +82,7 @@ export const Translations = {
       homeRedirect: "Home",
       placeholder: {
         email: "example@email.com",
-        ssn: "YYMMDDXXXX",
+        ssn: "dd-mm-yyyy",
       },
       infoText: {
         setPasswordText: "Set new password",
@@ -116,6 +116,9 @@ export const Translations = {
         periods: "Application periods have to be valid",
         empty: "Availabilityperiods cannot be empty",
       },
+      placeholder: {
+        date: "dd-mm-yyyy",
+      },
     },
     "homePage": {
       header: "IV1201 Group 14 Recruiting Application",
@@ -134,7 +137,10 @@ export const Translations = {
       search: "Search",
       error: "Could not get applications",
       name: "Name",
-      applicationDate: "Application Date"
+      applicationDate: "Application Date",
+      placeholder: {
+        date: "dd-mm-yyyy",
+      },
     },
     "showApplication":{
       name: "Name: ",
@@ -206,7 +212,7 @@ export const Translations = {
       homeRedirect: "Hem",
       placeholder: {
         email: "exempel@email.com",
-        ssn: "YYMMDDXXXX",
+        ssn: "dd-mm-åååå",
       },
       error: {
         apiFail: "API fetch förfrågan misslyckades",
@@ -236,7 +242,7 @@ export const Translations = {
       homeRedirect: "Hem",
       placeholder: {
         email: "exempel@email.com",
-        ssn: "YYMMDDXXXX",
+        ssn: "dd-mm-åååå",
       },
       infoText: {
         setPasswordText: "Bestäm nytt lösenord",
@@ -269,7 +275,10 @@ export const Translations = {
         yoe: "År av erfarenhet måste vara ett nummer",
         periods: "Ansöksperioden måste vara giltig",
         empty: "Tillgänglighetperioder får ej vara tomma",
-      }
+      },
+      placeholder: {
+        date: "dd-mm-åååå",
+      },
     },
     "homePage": {
       header: "IV1201 Grupp 14 Rekryteringsapplikation",
@@ -288,7 +297,10 @@ export const Translations = {
       search: "Sök",
       error: "Kunde inte hämta ansökningar",
       name: "Namn",
-      applicationDate: "Ansökans datum"
+      applicationDate: "Ansökans datum",
+      placeholder: {
+        date: "dd-mm-åååå",
+      },
     },
     "showApplication":{
       name: "Namn: ",

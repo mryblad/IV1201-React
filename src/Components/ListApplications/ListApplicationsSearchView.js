@@ -12,11 +12,11 @@ const ListApplicationsSearchView=({competences,getApplications,translations})=>
             </div>
             <div>
                 <label htmlFor="start">{translations.availableStart}</label>
-                <input type="date" id="start"/>
+                <input type="date" id="start" placeholder="dd-mm-yyyy"/>
             </div>
             <div>
                 <label htmlFor="end">{translations.availableEnd}</label>
-                <input type="date" id="end"/>
+                <input type="date" id="end" placeholder={translations.placeholder.date}/>
             </div>
             <div>
                 <label htmlFor="applicationstart">{translations.applicationStart}</label>
