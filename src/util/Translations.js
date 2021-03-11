@@ -52,7 +52,7 @@ export const Translations = {
       homeRedirect: "Home",
       placeholder: {
         email: "example@email.com",
-        ssn: "dd-mm-yyyy",
+        ssn: "yyyy-mm-dd",
       },
       error: {
         apiFail: "API fetch request failed",
@@ -82,7 +82,7 @@ export const Translations = {
       homeRedirect: "Home",
       placeholder: {
         email: "example@email.com",
-        ssn: "dd-mm-yyyy",
+        ssn: "yyyy-mm-dd",
       },
       infoText: {
         setPasswordText: "Set new password",
@@ -118,7 +118,7 @@ export const Translations = {
         empty: "Availabilityperiods cannot be empty",
       },
       placeholder: {
-        date: "dd-mm-yyyy",
+        date: "yyyy-mm-dd",
       },
     },
     "homePage": {
@@ -140,7 +140,7 @@ export const Translations = {
       name: "Name",
       applicationDate: "Application Date",
       placeholder: {
-        date: "dd-mm-yyyy",
+        date: "yyyy-mm-dd",
       },
     },
     "showApplication":{
@@ -213,7 +213,7 @@ export const Translations = {
       homeRedirect: "Hem",
       placeholder: {
         email: "exempel@email.com",
-        ssn: "dd-mm-åååå",
+        ssn: "åååå-mm-dd",
       },
       error: {
         apiFail: "API fetch förfrågan misslyckades",
@@ -243,7 +243,7 @@ export const Translations = {
       homeRedirect: "Hem",
       placeholder: {
         email: "exempel@email.com",
-        ssn: "dd-mm-åååå",
+        ssn: "åååå-mm-dd",
       },
       infoText: {
         setPasswordText: "Bestäm nytt lösenord",
@@ -279,7 +279,7 @@ export const Translations = {
         empty: "Tillgänglighetperioder får ej vara tomma",
       },
       placeholder: {
-        date: "dd-mm-åååå",
+        date: "åååå-mm-dd",
       },
     },
     "homePage": {
@@ -301,7 +301,7 @@ export const Translations = {
       name: "Namn",
       applicationDate: "Ansökans datum",
       placeholder: {
-        date: "dd-mm-åååå",
+        date: "åååå-mm-dd",
       },
     },
     "showApplication":{
