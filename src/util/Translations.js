@@ -111,6 +111,7 @@ export const Translations = {
       to: "to",
       addPeriod: "Add Period",
       submit: "Submit",
+      submitted: "Application submitted!",
       error: {
         yoe: "Years of experience needs to be a number",
         periods: "Application periods have to be valid",
@@ -271,6 +272,7 @@ export const Translations = {
       to: "till",
       addPeriod: "Lägg till period",
       submit: "Ansök",
+      submitted: "Ansökan har lämnats in!",
       error: {
         yoe: "År av erfarenhet måste vara ett nummer",
         periods: "Ansöksperioden måste vara giltig",
