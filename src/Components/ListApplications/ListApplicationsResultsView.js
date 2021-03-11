@@ -1,6 +1,6 @@
 import React from 'react';
 const ListApplicationsResultsView=({applications,error,handleRowClick,translations})=>
-    <div>
+    <div className="tableHolder">
         {error?<div>
             {"Error: " + translations.error}
         </div>:

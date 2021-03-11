@@ -40,7 +40,10 @@ html, body, #root, .App{
   }
 }
 
-
+.tableHolder{
+  height: 80%;
+  overflow: auto;
+}
 
 tr{
   border: 2px solid black;
