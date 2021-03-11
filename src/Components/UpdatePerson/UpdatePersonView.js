@@ -18,7 +18,7 @@ const UpdatePersonView=({ handleSubmit, handleEmpty, infoText, translations, err
           </div>
           <div className="ssn" style={{display: handleEmpty("ssn")}}>
             <label htmlFor="ssn">{translations.ssn}:</label>
-            <input type="date" id="ssn" name="ssn" /><br></br>
+            <input type="date" id="ssn" name="ssn" placeholder={translations.placeholder.ssn}/><br></br>
           </div>
           <div className="username" style={{display: handleEmpty("username")}}>
             <label htmlFor="username">{translations.username}:</label>
