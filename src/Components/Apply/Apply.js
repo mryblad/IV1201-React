@@ -2,7 +2,8 @@ import { createElement, useState, useEffect } from 'react';
 import {ApplyView} from './ApplyView';
 import apiService from "../../Services/apiService";
 import Validators from "../../util/Validators";
-import {Translations} from './../../util/Translations'
+import {Translations} from './../../util/Translations';
+import {useHistory} from 'react-router-dom';
 
 /**
  * Handles the application logic and controlls the ApplyView.
@@ -18,6 +19,7 @@ function Apply(){
   const [selectedPeriods,setSelectedPeriods]=useState([]);
   const [startDate, setStartDate]=useState(new Date().toISOString().split("T")[0]);
   const [error,setError]=useState();
+  const history=useHistory();
 
   const [unsavedValues,setUnsavedValues]=useState({
     competencies: {
@@ -139,7 +141,10 @@ function Apply(){
         apiService.submitApplication({
           competencies:filteredCompetences,
           periods:selectedPeriods
-        }).then(dt=>alert("Application submitted!"))
+        }).then(dt=>{
+          alert("Application submitted!");
+          history.goBack();
+        })
       } catch (error) {
         console.error(error);
         setError(error.message);
